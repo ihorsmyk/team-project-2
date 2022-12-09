@@ -1,14 +1,15 @@
-.hero__title {
+.hero-container {
     width: 100%;
+}
+
+.hero__title {
+    width: 300px;
     @include text(600, 22px, 42px);
     color: var(--accent-dark-orange);
     margin-bottom: 28px;
 }
 
-
 .hero__cocktail-pictures {
-    width: 300px;
-    margin-left: 20px;
     margin-bottom: 28px;
 }
 
@@ -16,27 +17,131 @@
     @include text(500, 14px, 28px);
     color: #000000;
     opacity: 0.8;
-    margin: 0px 20px 20px 20px;
+    margin-bottom: 20px;
 }
+
+    
+.hero__form-name {
+    width: 93px;
+    height: 34px;
+    margin-left: 94px;
+    border: 1px solid #FD5103;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:focus,
+    &:hover{
+    background-color: var(--text-white-color);
+    color: var(--accent-dark-orange)
+    }
+}
+
+.hero__name-coctail {
+    @include text(700, 16px, 22px);
+}
+
 
 .form-mobile {
 display: block;
 
 }
-.form-desktop {
+.form-desktop,
+.tablet-text {
 display: none;
 }
 
 
+
 @media screen and (min-width: 768px) {
+    .mobile {
+        display: none;
+    }
+
+    .tablet {
+        display: flex;
+    }
+
+    .tablet-text {
+        display: block;
+    }
+
     .form-mobile {
         display: none;
-
-
     }
 
     .form-desktop {
     display: block;
     }
+
+    .hero__title {
+        width: 336px;
+        @include text(600, 26px, 42px);
+        margin-top: 132px;
+        margin-bottom: 40px;
+    }
+
+    .hero__text {
+        margin-bottom: 40px;
+    }
+
+    .hero__box {
+        display: block;
+        
+    }
+
+    .hero__cocktail-pictures {
+        margin-left: 11px;
+    }
+
+    .hero__item {
+        width: 324px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1px;
+    }
+
+    .hero__name-items {
+        width: 24px;
+        height: 25px;
+        @include text(700, 14px, 21px);
+        color: var(--alphabet-color);
+        text-align: center;
+        
+        &:hover,
+        &:focus {
+            color:var(--accent-dark-orange);
+            border: 1px solid #5F6775;
+            text-shadow: 0px 4px 4px rgba(95, 103, 117, 0.25);
+            border: none;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (min-width: 1280px) {
     
+    .hero__title {
+        width: 684px;
+        @include text(600, 52px, 80px);
+        margin-top: 101px;
+        margin-bottom: 36px;
+    }
+
+    .hero__text {
+        @include text(500, 18px, 28px);
+        margin-bottom: 47px;
+    }
+
+    .hero__item {
+        width: 523px;
+        gap: 0px;
+    }
+
+    .hero__name-items {
+        @include text(700, 24px, 36px);
+        width: 40px;
+        height: 40px;
+    }
 }
