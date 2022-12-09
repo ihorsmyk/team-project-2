@@ -1,0 +1,42 @@
+.hero__title {
+    width: 100%;
+    @include text(600, 22px, 42px);
+    color: var(--accent-dark-orange);
+    margin-bottom: 28px;
+}
+
+
+.hero__cocktail-pictures {
+    width: 300px;
+    margin-left: 20px;
+    margin-bottom: 28px;
+}
+
+.hero__text {
+    @include text(500, 14px, 28px);
+    color: #000000;
+    opacity: 0.8;
+    margin: 0px 20px 20px 20px;
+}
+
+.form-mobile {
+display: block;
+
+}
+.form-desktop {
+display: none;
+}
+
+
+@media screen and (min-width: 768px) {
+    .form-mobile {
+        display: none;
+
+
+    }
+
+    .form-desktop {
+    display: block;
+    }
+    
+}
