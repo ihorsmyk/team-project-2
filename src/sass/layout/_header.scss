@@ -1,6 +1,9 @@
 .header__container{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .item {
@@ -25,6 +28,7 @@
 }
 
 .logo {
+    position: relative;
     font-family: var(--basic-font); 
     @include text(400, 28px, 24px);
     letter-spacing: 0.02em;
@@ -222,24 +226,23 @@
     display: flex;
 }
 
-
 }
 // -------------------------DESKTOP------------------
 @media screen and (min-width: 1280px) {
     .header__container{
         justify-content: start;
-        margin-left: 20px;
-        margin-right: 20px;
     }
 
     .page-header{
         justify-content: space-between;
+        
     }
 
 
     .site-nav{
         display: flex;
         opacity: 1;
+        column-gap: 60px;
     }
 
     .site-nav__item{
@@ -249,8 +252,9 @@
 
     .site-nav__switcher{
         display: flex;
-        margin-top: 40px;
-        margin-left: 172px;
+        // display: inline-block;
+        position: relative;
+        padding-left: 172px;
     }
 
     .mobile-menu {
