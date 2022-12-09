@@ -89,6 +89,7 @@
     left: 0;
     bottom: 0;
     background: var(--background-light);
+    // background-color: inherit;
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
@@ -238,11 +239,14 @@
         
     }
 
+    .logo {
+        margin-right: 0;
+    }
 
     .site-nav{
         display: flex;
         opacity: 1;
-        column-gap: 60px;
+        // column-gap: 60px;
     }
 
     .site-nav__item{
@@ -270,5 +274,5 @@
         margin-left: 250px;
         margin-right: 0;
     }
-
 }
+
