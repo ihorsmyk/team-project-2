@@ -1,5 +1,94 @@
-<header>
-	<a href="favorites.html">favorites page</a>
-	<p>Header hello</p>
-
+<header class="header">
+  <div class="container header__container">
+    <a href="/src/index.html" class="logo link">COCKTAILS</a>
+    <div class="page-header">
+      <nav class="menu is-open">
+        <ul class="site-nav list">
+          <li class="site-nav__item item">
+            <a href="/src/index.html" class="site-nav__link link">Home</a>
+          </li>
+          <li class="site-nav__item item">
+            <a href="/src/favorites.html" class="site-nav__link link"
+              >Favorites</a
+            >
+          </li>
+        </ul>
+        <form action="search" class="search-form">
+          <button class="search-form__btn" type="button" width="32" height="32">
+            <svg class="search-form__icon" width="32" height="32">
+              <use>href="./images/symbol-defs.svg#icon-search"</use>
+            </svg>
+          </button>
+          <input
+            type="search"
+            id="search"
+            placeholder="Search"
+            class="search-form__input"
+          />
+        </form>
+        <div class="site-nav__switcher">
+          <form class="form-toggle">
+            <label class="label-toggle label-light-toggle-light-theme"
+              >Light</label
+            >
+            <input class="toggle" type="checkbox" />
+            <label class="label-toggle label-dark-toggle-light-theme"
+              >Dark</label
+            >
+          </form>
+        </div>
+      </nav>
+      <button type="button" class="mobile-menu__btn" data-menu-open>
+        <svg class="mobile-menu__btn__icon" width="30" height="16">
+          <use href="/src/images/symbol-defs.svg#icon-menu"></use>
+        </svg>
+      </button>
+    </div>
+    <!-- ============== MOBILE MENU ==================== -->
+    <div class="mobile-menu" data-menu>
+      <a href="/src/index.html" class="mobile-logo logo link">COCKTAILS</a>
+      <button type="button" class="mobile-menu__close-btn" data-menu-close>
+        <svg class="mobile-menu__close-icon" width="18" height="18">
+          <use href="/src/images/symbol-defs.svg#icon-close"></use>
+        </svg>
+      </button>
+      <ul class="mobile-menu__list list">
+        <li class="mobile-menu__item switcher item">
+          <form class="form-toggle">
+            <label class="label-toggle label-light-toggle-light-theme"
+              >Light</label
+            >
+            <input class="toggle" type="checkbox" />
+            <label class="label-toggle label-dark-toggle-light-theme"
+              >Dark</label
+            >
+          </form>
+        </li>
+        <li class="mobile-menu__item searcher item">
+          <form action="search" class="search-form">
+            <button class="search-form__btn" type="button" width="32">
+              <svg class="search-form__icon" width="32" height="32">
+                <use>href="./images/symbol-defs.svg#icon-search"</use>
+              </svg>
+            </button>
+            <input
+              type="search"
+              name=""
+              id="search"
+              placeholder="Search"
+              class="search-form__input"
+            />
+          </form>
+        </li>
+        <li class="mobile-menu__item nav item">
+          <a href="/src/index.html" class="site-nav__link link">Home</a>
+        </li>
+        <li class="mobile-menu__item nav item">
+          <a href="/src/favorites.html" class="site-nav__link link"
+            >Favorites
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </header>
