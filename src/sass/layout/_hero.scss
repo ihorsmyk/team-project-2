@@ -25,20 +25,27 @@
     width: 93px;
     height: 34px;
     margin-left: 94px;
+    @include text(700, 16px, 22px);
+    color: var(--accent-dark-orange);
+    background-color: var(--accent-white-color);
     border: 1px solid #FD5103;
     border-radius: 4px;
     cursor: pointer;
 
     &:focus,
-    &:hover{
-    background-color: var(--text-white-color);
-    color: var(--accent-dark-orange)
+    &:hover {
+    background-color: var(--accent-dark-orange);
+    color: var(--accent-white-color);
     }
 }
 
-.hero__name-coctail {
+.hero__name-search {
     @include text(700, 16px, 22px);
+    background-color: var(--accent-white-color);
+    color: var(--alphabet-color);
+
 }
+
 
 
 .form-mobile {

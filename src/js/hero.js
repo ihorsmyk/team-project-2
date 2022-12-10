@@ -51,7 +51,7 @@ function renderLitery(array) {
   markup = array
     .map(element => {
       // console.log(element)
-      return `<option value="${element}">${element}</option>`;
+      return `<option class="hero__name-search" value="${element}">${element}</option>`;
     })
     .join('');
 }
@@ -82,15 +82,12 @@ function onTargetCocktailClick(event) {
   });
 }
 
-refs.formSelect.addEventListener('chanche', onTargetSearchCocktailClick);
+refs.formSelect.addEventListener('change', onTargetSearchCocktailChange);
 
-function onTargetSearchCocktailClick(event) {
+function onTargetSearchCocktailChange(event) {
   event.preventDefault();
-
   const nameSearchCoctail = event.target.value;
-
-  console.log(nameSearchCoctail);
-
+  // console.log(nameSearchCoctail);
   fetchCocktail(nameSearchCoctail).then(data => {
     console.log(data);
   });
