@@ -107,6 +107,7 @@ async function randomCocktails(e) {
 }
 
 const refs = {
+  menu: document.querySelector('[data-menu]'),
   formEl: document.querySelector('.search-form'),
   mobileFormEl: document.querySelector('.search-form-mobile'),
   siteFavoriteHeaderWrapper: document.querySelector(
@@ -150,6 +151,14 @@ refs.cardsContainerEl.addEventListener('click', handlerLearnMore);
 
 async function handlerSubmitForm(e) {
   e.preventDefault();
+  if (e.target[0].classList.contains('mobile-btn-search')) {
+    refs.menu.classList.toggle('is-open');
+    window.scrollTo({
+      top: 800,
+      behavior: 'smooth',
+    });
+  }
+
   refs.paginationContainer.innerHTML = '';
   refs.paginationListContainer.innerHTML = '';
   try {
@@ -239,7 +248,10 @@ async function handlerSubmitForm(e) {
     }
 
     displayList(cocktailsData, rows, currentPage);
-    displayPagination(cocktailsData, rows);
+    if (cocktailsData.length > rows) {
+      displayPagination(cocktailsData, rows);
+    }
+
     //   pagination test //
   } catch (error) {
     console.log(error);
