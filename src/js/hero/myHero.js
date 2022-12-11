@@ -80,6 +80,7 @@ const array = [
 ];
 
 let markup = [];
+let markupItems = [];
 
 function renderLitery(array) {
   markup = array
