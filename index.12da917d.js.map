@@ -1,0 +1,1 @@
+{"mappings":"oeAGAA,EAAA,S","sources":["src/index.js"],"sourcesContent":["// import './js/hero/heroAPI.js';\n// import './js/hero/hero.js';\n// import './js/header/header';\nimport './js/header/modal-menu';\nimport './js/header/switch-theme';\n"],"names":["parcelRequire"],"version":3,"file":"index.12da917d.js.map"}
