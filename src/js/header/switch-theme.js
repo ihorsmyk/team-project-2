@@ -1,7 +1,6 @@
 const formToggleRefs = {
   labels: document.querySelectorAll('.label-toggle'),
   toggle: document.querySelector('.toggle'),
-  siteNav: document.querySelector('.site-nav'),
 };
 
 formToggleRefs.toggle.addEventListener('change', () => {

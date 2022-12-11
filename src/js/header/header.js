@@ -487,4 +487,6 @@ async function handlerLearnMore(e) {
   }
 }
 
+export { handlerLearnMore };
+
 //=========== close modal cocktail ========== //
