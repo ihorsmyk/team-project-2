@@ -1,0 +1,25 @@
+{{#each this}}
+<section class="mobile-ingr">
+	<div class="ingr-backdrop is-hidden">
+		<div class="mobile-ingr-modal">
+			<div class="container mobile-modal-container">
+				<h3 class="ingr-title mobile-ingr-title">{{strIngredient}}</h3>
+				<h4 class="ingr-subtitle mobile-ingr-subtitle">{{strType}}</h4>
+				<p class="ingr-description mobile-ingr-description">{{strDescription}}</p>
+				<p class="ingr-alcohol">Alcohol - {{strAlcohol}}</p>
+				<div class="btn-bottom-wrapper mobile-bottom-wrapper">
+					<button type="button" class="tablet-btn ingr-btn__add">Add to favorite
+					</button>
+					<button type="button" class="tablet-btn ingr-btn__remove">Remove from favorite
+					</button>
+				</div>
+				<div>
+					<svg class="ingr-icon-close mobile-ingr-icon-close">
+						<use href="../symbol-defs.a8b2e413.svg#icon-close"></use>
+					</svg>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{{/each}}

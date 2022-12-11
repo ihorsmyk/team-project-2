@@ -1,0 +1,19 @@
+{{#each this}}
+<article class="card" id={{idDrink}}>
+	<img class="card-photo" src={{strDrinkThumb}} alt="" loading="lazy">
+	<p class="card-title">{{strDrink}}</p>
+	<div class="card-btn-wrapper">
+		<button type="button" class="card-btn card-btn__learn">Learn more</button>
+		<button type="button" class="card-btn card-btn__add" id={{idDrink}}>Add to
+			<svg width="17" height="15">
+				<use href="../symbol-defs.a8b2e413.svg#icon-heart"></use>
+			</svg>
+		</button>
+		<button type="button" class="card-btn card-btn__remove" id={{idDrink}}>Remove
+			<svg width="17" height="15">
+				<use href="../symbol-defs.a8b2e413.svg#icon-heart"></use>
+			</svg>
+		</button>
+	</div>
+</article>
+{{/each }}

@@ -1,0 +1,77 @@
+.ingridients-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.ingridients-container {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 32px;
+}
+.ingridient {
+  padding: 20px;
+  margin: 0 auto;
+  width: 100%;
+  border: 1px solid #fd5103;
+  border-radius: 4px;
+}
+.ingridient-card-title {
+  @include text(26px, 900, 42px);
+  color: var(--text-dark-color);
+  margin-bottom: 20px;
+}
+.ingridient-card-subtitle {
+  @include text(14px, 600, 21px);
+  color: var(--text-dark-color);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.ingridient-card-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 15px;
+}
+
+.ingridient-btn {
+  @include text(14px, 400, 24px);
+  padding: 7px 15px;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  border: 1px solid var(--accent-dark-orange);
+}
+.ingridient-btn__learn {
+  color: white;
+  background-color: var(--accent-light-orange);
+}
+.ingridient-btn__remove {
+  display: flex;
+  column-gap: 3px;
+  align-items: center;
+  color: var(--accent-light-orange);
+  background-color: transparent;
+}
+
+@media screen and (min-width: 380px) {
+  .ingridient {
+    width: 335px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .ingridients-container {
+    display: grid;
+    grid-template-columns: 335px 335px;
+    grid-column-gap: 32px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .ingridient {
+    width: 395px;
+  }
+  .ingridients-container {
+    display: grid;
+    grid-template-columns: 395px 395px 395px;
+    grid-column-gap: 32px;
+  }
+}

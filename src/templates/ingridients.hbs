@@ -1,0 +1,14 @@
+{{#each this}}
+<article class="ingridient">
+	<p class="ingridient-card-title">{{strIngredient}}</p>
+	<p class="ingridient-card-subtitle">{{strType}}</p>
+	<div class="ingridient-card-btn-wrapper">
+		<button type="button" class="ingridient-btn ingridient-btn__learn">Learn more</button>
+		<button type="button" class="ingridient-btn ingridient-btn__remove">Remove
+			<svg width="15" height="15" class="ingridients-btn-icon">
+				<use href="../symbol-defs.a8b2e413.svg#icon-heart"></use>
+			</svg>
+		</button>
+	</div>
+</article>
+{{/each}}

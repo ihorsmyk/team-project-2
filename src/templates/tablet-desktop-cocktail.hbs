@@ -1,0 +1,38 @@
+{{#each this}}
+<div class="backdrop is-hidden">
+	<section class="tablet-desktop-modal">
+		<div class="modal-wrapper">
+			<div class="top-section">
+				<img src={{strDrinkThumb}} alt="">
+				<div class="top-right-section">
+					<h3 class="cocktail-title">{{strDrink}}</h3>
+					<p class="cocktail-ingridients">Ingridients:</p>
+					<p class="cocktail-per">Per coctail:</p>
+					<ul class="cocktail-ingridients-list list">
+						{{#each ingridients}}
+						<li class="cocktail-ingridients-item">{{this}}</li>
+						{{/each}}
+					</ul>
+				</div>
+				<div class="close-wrapper">
+					<svg class="cocktail-icon-close">
+						<use href="../symbol-defs.a8b2e413.svg#icon-close"></use>
+					</svg>
+				</div>
+			</div>
+
+			<div class="bottom-section">
+				<p class="cocktail-instraction">Instractions:</p>
+				<p class="cocktail-description">{{strInstructions}}
+				</p>
+			</div>
+			<div class="btn-bottom-wrapper">
+				<button type="button" class="tablet-btn tablet-btn-add" id={{idDrink}}>Add to favorite
+				</button>
+				<button type="button" class="tablet-btn tablet-btn-remove" id={{idDrink}}>Remove from favorite
+				</button>
+			</div>
+		</div>
+	</section>
+</div>
+{{/each}}

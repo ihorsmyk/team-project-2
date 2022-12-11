@@ -3,7 +3,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 32px;
+  gap: 28px;
+}
+.cards-title {
+  text-align: center;
+  margin-bottom: 60px;
 }
 .card {
   font-family: var(--second-font);
@@ -12,7 +16,8 @@
   overflow: hidden;
 }
 .card-photo {
-  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
   margin-bottom: 48px;
 }
 
@@ -20,7 +25,6 @@
   @include text(26px, 900, 42px);
   text-align: center;
   color: var(--text-dark-color);
-
   margin-bottom: 16px;
 }
 
@@ -42,7 +46,7 @@
 }
 
 .card-btn {
-  @include text(14px, 400, 24px);
+  @include text(20px, 400, 24px);
   text-align: center;
   font-size: 14px;
   line-height: 24px;
@@ -56,6 +60,9 @@
   background-color: var(--accent-light-orange);
   color: var(--text-white-color);
 }
+.card-btn__learn:hover {
+  background-color: var(--accent-dark-orange);
+}
 .card-btn__add {
   display: flex;
   align-items: center;
@@ -65,24 +72,57 @@
   color: var(--accent-light-orange);
   background-color: transparent;
 }
+.card-btn__add:hover {
+  color: var(--text-white-color);
+  background-color: var(--accent-light-orange);
+}
+.card-btn__remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 20px;
+  column-gap: 8px;
+  color: var(--accent-light-orange);
+  background-color: transparent;
+}
+.card-btn__remove:hover {
+  color: var(--text-white-color);
+  background-color: var(--accent-light-orange);
+}
+
+@media screen and (max-width: 450px) {
+  .card-photo {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 450px) {
+  .card-photo {
+    width: 400px;
+  }
+}
 
 @media screen and (min-width: 768px) {
   .card-btn {
-    padding: 12px 27px;
+    padding: 12px 20px;
     @include text(20px, 400, 24px);
   }
   .card-btn__add {
     padding: 12px 26px 13px 12px;
   }
+  .card-photo {
+    width: 335px;
+  }
 }
 @media screen and (min-width: 1280px) {
   .card-btn {
-    padding: 12px 38px;
   }
   .card-btn__add {
     padding: 12px 21px 12px 24px;
   }
   .card-btn-wrapper {
     padding: 0px 28px;
+  }
+  .card-photo {
+    width: 395px;
   }
 }
