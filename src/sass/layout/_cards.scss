@@ -23,8 +23,8 @@
 
 .card-title {
   @include text(26px, 900, 42px);
+  color: inherit;
   text-align: center;
-  color: var(--text-dark-color);
   margin-bottom: 16px;
 }
 
