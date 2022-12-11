@@ -355,6 +355,7 @@ async function handlerLearnMore(e) {
           const ingrIconClose = document.querySelector('.ingr-icon-close');
           ingrIconClose.addEventListener('click', e => {
             ingrBackdrop.classList.add('is-hidden');
+            document.body.style.overflow = 'hidden';
           });
 
           const ingrBtnRemove = document.querySelector('.ingr-btn__remove');
@@ -451,7 +452,7 @@ async function handlerLearnMore(e) {
           const ingrIconClose = document.querySelector('.ingr-icon-close');
           ingrIconClose.addEventListener('click', () => {
             ingrBackdrop.classList.add('is-hidden');
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = 'hidden';
           });
 
           const ingrBtnRemove = document.querySelector('.ingr-btn__remove');
