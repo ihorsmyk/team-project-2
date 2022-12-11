@@ -134,7 +134,7 @@ refs.siteFavoriteHeaderWrapper.addEventListener('mouseout', () => {
   refs.favoriteHeaderWrapper.style.display = 'none';
 });
 
-refs.iconArrow.transform = 'rotate(180deg)';
+// refs.iconArrow.transform = 'rotate(180deg)';
 refs.mobileFavorite.addEventListener('click', () => {
   refs.mobileFavorites.classList.toggle('hide-show');
   refs.iconArrow.classList.toggle('rotate180');
