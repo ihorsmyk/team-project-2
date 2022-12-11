@@ -30,7 +30,7 @@
 
 .hero__text {
   @include text(14px, 500, 28px);
-  color: #000000;
+
   opacity: 0.8;
   margin-bottom: 20px;
   text-align: center;
@@ -103,6 +103,7 @@
   }
 
   .hero__text {
+    color: inherit;
     margin-bottom: 40px;
   }
 

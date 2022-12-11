@@ -22,10 +22,10 @@
     color: #fd5103;
 }
 
-// .js-dark-theme {
-//     background-color: #202025;
-// }
-
+.js-dark-theme {
+    background-color: var(--background-dark);
+    color: white;
+}
 /*----------------------------*/
 
 .toggle {
