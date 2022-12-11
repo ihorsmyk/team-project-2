@@ -112,6 +112,15 @@
   .card-photo {
     width: 335px;
   }
+  //   .cards-container {
+  //     width: 768px;
+  //   }
+}
+
+@media screen and (min-width: 1131px) {
+  .cards-container {
+    width: 768px;
+  }
 }
 @media screen and (min-width: 1280px) {
   .card-btn {
@@ -124,5 +133,8 @@
   }
   .card-photo {
     width: 395px;
+  }
+  .cards-container {
+    width: 1280px;
   }
 }

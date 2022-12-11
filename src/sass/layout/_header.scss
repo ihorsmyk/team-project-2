@@ -304,7 +304,7 @@
     display: flex;
     // display: inline-block;
     position: relative;
-    padding-left: 72px;
+    padding-left: 115px;
   }
 
   .mobile-menu {
@@ -369,7 +369,7 @@
   border: 2px solid var(--accent-dark-orange);
 }
 .mobile-nav__link {
-  color: var(--text-dark-color);
+  color: inherit;
   height: 40px;
   display: flex;
   justify-content: center;
@@ -415,4 +415,8 @@
 
 .icons-all {
   display: none;
+}
+
+.mobile-menu-background-switcher {
+  background-color: #202025;
 }
