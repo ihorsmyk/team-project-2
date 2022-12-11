@@ -1,0 +1,29 @@
+{{#each this}}
+<section class="coctail section">
+	<div class="coctail-container container">
+		<h3 class="cocktail-title">{{strDrink}}</h3>
+		<p class="cocktail-instraction">Instractions:</p>
+		<p class="cocktail-description">{{strInstructions}}
+		</p>
+		<img src={{strDrinkThumb}} alt="" class="cocktail-image">
+		<p class="cocktail-ingridients">Ingridients:</p>
+		<p class="cocktail-per">Per coctail:</p>
+		<ul class="cocktail-ingridients-list list">
+			{{#each ingridients}}
+			<li class="cocktail-ingridients-item">{{this}}</li>
+			{{/each}}
+		</ul>
+		<div class="card-btn-wrapper">
+			<button type="button" class="modal-btn modal-btn-add" id={{idDrink}}>Add to favorite
+			</button>
+			<button type="button" class="modal-btn modal-btn-remove" id={{idDrink}}>Remove from favorite
+			</button>
+		</div>
+		<div class="mobile-close-wrapper">
+			<svg class="mobile-icon-close">
+				<use href="../symbol-defs.a8b2e413.svg#icon-close"></use>
+			</svg>
+		</div>
+	</div>
+</section>
+{{/each}}

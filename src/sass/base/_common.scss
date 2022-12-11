@@ -38,8 +38,16 @@ body {
   font-family: var(--basic-font);
   font-size: var(--basic-font-size);
   color: var(--text-dark-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .js-dark-theme {
   background-color: var(--background-dark);
+  color: white;
+}
+
+footer {
+  margin-top: auto;
 }
