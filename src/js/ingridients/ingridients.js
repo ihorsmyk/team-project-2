@@ -33,6 +33,15 @@ refs.mobileFavorite.addEventListener('click', () => {
   refs.iconArrow.classList.toggle('rotate180');
 });
 
+//
+const iconHeart1 = document.querySelector('.div-icon-heart1');
+const iconHeart2 = document.querySelector('.div-icon-heart2');
+const iconClose = document.querySelector('.div-icon-close');
+const useHeart1 = iconHeart1.href.baseVal;
+const useHeart2 = iconHeart2.href.baseVal;
+const useClose = iconClose.href.baseVal;
+//
+
 const INGR_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php';
 const axiosGetIngrByName = query => {
   const res = axios.get(`${INGR_URL}?i=${query}`);
@@ -47,6 +56,7 @@ window.addEventListener('load', () => {
     refs.ingrContainer.innerHTML = noIngridients();
   } else {
     refs.ingrContainer.innerHTML = ingridient(ingridientsFromLS);
+    addSvgUseHeartsIngr();
   }
 });
 
@@ -64,6 +74,9 @@ ingrContainer.addEventListener('click', async e => {
     const ingrBackDrop = document.querySelector('.ingr-backdrop');
 
     refs.modalIngr.innerHTML = tabletDesctopIngr(newData);
+    document.querySelector(
+      '.ingr-icon-close'
+    ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
     const addBtnModal = document.querySelector('.ingr-btn__add');
     const removeBtnModal = document.querySelector('.ingr-btn__remove');
     addBtnModal.style.display = 'none';
@@ -84,6 +97,7 @@ ingrContainer.addEventListener('click', async e => {
         item => item.strIngredient !== article.children[0].textContent
       );
       refs.ingrContainer.innerHTML = ingridient(ingrs);
+      addSvgUseHeartsIngr();
       console.log(ingrs.length);
 
       localStorage.setItem('ingridients', JSON.stringify(ingrs));
@@ -108,6 +122,7 @@ ingrContainer.addEventListener('click', async e => {
       localStorage.setItem('ingridients', JSON.stringify(ingrs));
       const newIngrs = JSON.parse(localStorage.getItem('ingridients'));
       refs.ingrContainer.innerHTML = ingridient(newIngrs);
+      addSvgUseHeartsIngr();
     });
 
     const ingrBackdrop = document.querySelector('.ingr-backdrop');
@@ -124,6 +139,7 @@ ingrContainer.addEventListener('click', async e => {
       item => item.strIngredient !== article.children[0].textContent
     );
     refs.ingrContainer.innerHTML = ingridient(ingrs);
+    addSvgUseHeartsIngr();
     console.log(ingrs.length);
 
     localStorage.setItem('ingridients', JSON.stringify(ingrs));
@@ -137,3 +153,11 @@ ingrContainer.addEventListener('click', async e => {
   }
 });
 //
+function addSvgUseHeartsIngr() {
+  const removeBtnsSvg = document.querySelectorAll(
+    '.ingridient-btn__remove svg'
+  );
+  for (let svg of removeBtnsSvg) {
+    svg.innerHTML = `<use class="use-heart1" href='${useHeart2}'></use>`;
+  }
+}

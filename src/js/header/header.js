@@ -8,6 +8,13 @@ const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php';
 const RANDOM_URL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
 const INGR_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php';
 
+const iconHeart1 = document.querySelector('.div-icon-heart1');
+const iconHeart2 = document.querySelector('.div-icon-heart2');
+const iconClose = document.querySelector('.div-icon-close');
+const useHeart1 = iconHeart1.href.baseVal;
+const useHeart2 = iconHeart2.href.baseVal;
+const useClose = iconClose.href.baseVal;
+
 const axiosGetImages = query => {
   const res = axios.get(`${BASE_URL}?s=${query}`);
   return res;
@@ -42,6 +49,7 @@ async function randomCocktails(e) {
       for (let btn of btnsRemove) {
         btn.style.display = 'none';
       }
+      addSvgUseHearts();
     });
   } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
     const r1 = axios.get(RANDOM_URL);
@@ -67,6 +75,7 @@ async function randomCocktails(e) {
       for (let btn of btnsRemove) {
         btn.style.display = 'none';
       }
+      addSvgUseHearts();
     });
   } else if (window.innerWidth >= 1280) {
     const r1 = axios.get(RANDOM_URL);
@@ -101,6 +110,7 @@ async function randomCocktails(e) {
         for (let btn of btnsRemove) {
           btn.style.display = 'none';
         }
+        addSvgUseHearts();
       }
     );
   }
@@ -319,6 +329,9 @@ async function handlerLearnMore(e) {
     console.log(window.innerWidth);
     if (window.innerWidth > 768) {
       modalCocktailEl.innerHTML = tabletDesktopCocktail(newData);
+      document.querySelector(
+        '.cocktail-icon-close'
+      ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
 
       const listIngridients = document.querySelector(
         '.cocktail-ingridients-list'
@@ -332,6 +345,9 @@ async function handlerLearnMore(e) {
           console.log(ingrData.data.ingredients[0]);
           const ingrArr = [{ ...ingrData.data.ingredients[0] }];
           refs.modalIngr.innerHTML = tabletDesctopIngr(ingrArr);
+          document.querySelector(
+            '.ingr-icon-close'
+          ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
           const ingrBackdrop = document.querySelector('.ingr-backdrop');
           ingrBackdrop.classList.remove('is-hidden');
 
@@ -405,6 +421,10 @@ async function handlerLearnMore(e) {
       const cocktailModal = document.querySelector('.coctail');
       console.log(cocktailModal);
 
+      document.querySelector(
+        '.mobile-icon-close'
+      ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
+
       //
       document.body.style.overflow = 'hidden';
       //
@@ -420,6 +440,9 @@ async function handlerLearnMore(e) {
           console.log(ingrData.data.ingredients[0]);
           const ingrArr = [{ ...ingrData.data.ingredients[0] }];
           refs.modalIngr.innerHTML = mobileIngrModal(ingrArr);
+          document.querySelector(
+            '.mobile-ingr-icon-close'
+          ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
           const ingrBackdrop = document.querySelector('.ingr-backdrop');
           ingrBackdrop.classList.remove('is-hidden');
           document.body.style.overflow = 'hidden';
@@ -490,3 +513,14 @@ async function handlerLearnMore(e) {
 export { handlerLearnMore };
 
 //=========== close modal cocktail ========== //
+
+function addSvgUseHearts() {
+  const addBtnsSvg = document.querySelectorAll('.card-btn__add svg');
+  for (let svg of addBtnsSvg) {
+    svg.innerHTML = `<use class="use-heart1" href='${useHeart1}'></use>`;
+  }
+  const removeBtnsSvg = document.querySelectorAll('.card-btn__remove svg');
+  for (let svg of removeBtnsSvg) {
+    svg.innerHTML = `<use class="use-heart1" href='${useHeart2}'></use>`;
+  }
+}

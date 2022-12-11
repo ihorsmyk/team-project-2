@@ -31,6 +31,14 @@ refs.siteFavoriteHeaderWrapper.addEventListener('mouseout', () => {
   refs.favoriteHeaderWrapper.style.display = 'none';
 });
 
+//
+const iconHeart1 = document.querySelector('.div-icon-heart1');
+const iconHeart2 = document.querySelector('.div-icon-heart2');
+const iconClose = document.querySelector('.div-icon-close');
+const useHeart1 = iconHeart1.href.baseVal;
+const useHeart2 = iconHeart2.href.baseVal;
+const useClose = iconClose.href.baseVal;
+
 // refs.iconArrow.transform = 'rotate(180deg)';
 refs.mobileFavorite.addEventListener('click', () => {
   console.log('111');
@@ -72,6 +80,7 @@ function loadFromLS() {
     for (let btn of btnsAdd) {
       btn.style.display = 'none';
     }
+    addSvgUseHearts();
   }
 }
 
@@ -89,11 +98,13 @@ function handlerRemoveFromLS(e) {
 
     const markup = drinkCardTemplate(favorite);
     refs.cardsContainerEl.innerHTML = markup;
+    addSvgUseHearts();
 
     const btnsAdd = document.querySelectorAll('.card-btn__add');
     for (let btn of btnsAdd) {
       btn.style.display = 'none';
     }
+
     if (favorite.length === 0) {
       refs.cardsCaption.style.display = 'none';
       refs.cardsContainerEl.innerHTML = notCocktails();
@@ -127,6 +138,9 @@ async function handlerLearnMore(e) {
     console.log(window.innerWidth);
     if (window.innerWidth > 768) {
       modalCocktailEl.innerHTML = tabletDesktopCocktail(newData);
+      document.querySelector(
+        '.cocktail-icon-close'
+      ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
 
       const listIngridients = document.querySelector(
         '.cocktail-ingridients-list'
@@ -140,6 +154,9 @@ async function handlerLearnMore(e) {
           console.log(ingrData.data.ingredients[0]);
           const ingrArr = [{ ...ingrData.data.ingredients[0] }];
           refs.modalIngr.innerHTML = tabletDesctopIngr(ingrArr);
+          document.querySelector(
+            '.ingr-icon-close'
+          ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
           const ingrBackdrop = document.querySelector('.ingr-backdrop');
           ingrBackdrop.classList.remove('is-hidden');
 
@@ -189,6 +206,7 @@ async function handlerLearnMore(e) {
         removeBtn.style.display = 'block';
         addBtn.style.display = 'none';
         refs.cardsContainerEl.innerHTML = drinkCardTemplate(favorites);
+        addSvgUseHearts();
 
         const addBtnAll = document.querySelectorAll('.card-btn__add');
         for (let addBtn of addBtnAll) {
@@ -205,6 +223,7 @@ async function handlerLearnMore(e) {
         removeBtn.style.display = 'none';
         addBtn.style.display = 'block';
         refs.cardsContainerEl.innerHTML = drinkCardTemplate(favorites);
+        addSvgUseHearts();
 
         const addBtnAll = document.querySelectorAll('.card-btn__add');
         for (let addBtn of addBtnAll) {
@@ -229,6 +248,9 @@ async function handlerLearnMore(e) {
       });
     } else if (window.innerWidth < 768) {
       modalCocktailEl.innerHTML = mobileLearnMore(newData);
+      document.querySelector(
+        '.mobile-icon-close'
+      ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
       const cocktailModal = document.querySelector('.coctail');
 
       //
@@ -244,6 +266,9 @@ async function handlerLearnMore(e) {
           console.log(ingrData.data.ingredients[0]);
           const ingrArr = [{ ...ingrData.data.ingredients[0] }];
           refs.modalIngr.innerHTML = mobileIngrModal(ingrArr);
+          document.querySelector(
+            '.mobile-ingr-icon-close'
+          ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
           const ingrBackdrop = document.querySelector('.ingr-backdrop');
           ingrBackdrop.classList.remove('is-hidden');
 
@@ -299,6 +324,7 @@ async function handlerLearnMore(e) {
         removeBtn.style.display = 'block';
         addBtn.style.display = 'none';
         refs.cardsContainerEl.innerHTML = drinkCardTemplate(favorites);
+        addSvgUseHearts();
 
         const addBtnAll = document.querySelectorAll('.card-btn__add');
         for (let addBtn of addBtnAll) {
@@ -314,6 +340,7 @@ async function handlerLearnMore(e) {
         removeBtn.style.display = 'none';
         addBtn.style.display = 'block';
         refs.cardsContainerEl.innerHTML = drinkCardTemplate(favorites);
+        addSvgUseHearts();
 
         const addBtnAll = document.querySelectorAll('.card-btn__add');
         for (let addBtn of addBtnAll) {
@@ -324,5 +351,17 @@ async function handlerLearnMore(e) {
         }
       });
     }
+  }
+}
+
+//  use icons
+function addSvgUseHearts() {
+  const addBtnsSvg = document.querySelectorAll('.card-btn__add svg');
+  for (let svg of addBtnsSvg) {
+    svg.innerHTML = `<use class="use-heart1" href='${useHeart1}'></use>`;
+  }
+  const removeBtnsSvg = document.querySelectorAll('.card-btn__remove svg');
+  for (let svg of removeBtnsSvg) {
+    svg.innerHTML = `<use class="use-heart1" href='${useHeart2}'></use>`;
   }
 }
