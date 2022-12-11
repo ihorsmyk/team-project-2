@@ -212,7 +212,10 @@ async function onTargetCocktailClick(event) {
     }
 
     displayList(cocktailsData, rows, currentPage);
-    displayPagination(cocktailsData, rows);
+    //  displayPagination(cocktailsData, rows);
+    if (cocktailsData.length > rows) {
+      displayPagination(cocktailsData, rows);
+    }
     //   pagination test //
   } catch (error) {
     console.log(error);
@@ -220,6 +223,123 @@ async function onTargetCocktailClick(event) {
 }
 
 refs.formSelect.addEventListener('change', onTargetSearchCocktailChange);
+
+const myForm = document.querySelector('.my-form');
+const mySelect = document.querySelector('.my-select');
+const myDivOptions = document.querySelector('.my-div-options');
+const myDivArrow = document.querySelector('.my-div-arrow');
+console.dir(myDivOptions);
+
+myForm.addEventListener('click', async event => {
+  event.preventDefault();
+  mySelect.classList.toggle('active-select');
+
+  mySelect.addEventListener('click', async event => {
+    event.preventDefault();
+    refs.paginationContainer.innerHTML = '';
+    refs.paginationListContainer.innerHTML = '';
+
+    try {
+      const nameSearchCoctail = event.target.textContent.trim();
+      myDivOptions.textContent = nameSearchCoctail;
+
+      myForm.style.backgroundColor = '#fd5103';
+      myForm.style.borderRadius = '4px';
+		 myDivOptions.style.color = '#fff';
+		 
+      myDivArrow.style.stroke = '#fff';
+
+      const { data } = await fetchCocktail(nameSearchCoctail);
+      if (data.drinks === null) {
+        refs.cardsCaption.style.display = 'none';
+        refs.cardsContainerEl.innerHTML = refs.errorEl.innerHTML;
+        return;
+      }
+      refs.cardsCaption.style.display = 'block';
+      const btnsRemove = document.querySelectorAll('.card-btn__remove');
+      for (let btn of btnsRemove) {
+        btn.style.display = 'none';
+      }
+
+      //   pagination test //
+      const cocktailsData = data.drinks;
+      let currentPage = 1;
+      let rows;
+      if (window.innerWidth < 768) {
+        rows = 3;
+      } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
+        rows = 6;
+      } else if (window.innerWidth >= 1280) {
+        rows = 9;
+      }
+
+      function displayList(cocktailsArr, rowPerPage, page) {
+        const paginationContainer = document.querySelector(
+          '.pagination-container'
+        );
+        paginationContainer.innerHTML = '';
+        page--;
+        const start = rowPerPage * page;
+        const end = start + rowPerPage;
+        const paginatedData = cocktailsArr.slice(start, end);
+        //
+        refs.cardsContainerEl.innerHTML = drinkCardTemplate(paginatedData);
+        addSvgUseHearts();
+        const btnsRemove = document.querySelectorAll('.card-btn__remove');
+        for (let btn of btnsRemove) {
+          btn.style.display = 'none';
+        }
+        //
+
+        paginatedData.forEach(el => {
+          const cocktailEl = document.createElement('div');
+          cocktailEl.innerHTML = el.strDrink;
+        });
+      }
+      function displayPagination(cocktailsArr, rowPerPage) {
+        const paginationEl = document.querySelector('.pagination');
+        const pagesCount = Math.ceil(cocktailsArr.length / rowPerPage);
+        const ulEl = document.createElement('ul');
+        ulEl.classList.add('pagination-list');
+
+        for (let i = 0; i < pagesCount; i++) {
+          const liEl = displayPaginationBtn(i + 1);
+          ulEl.appendChild(liEl);
+        }
+        paginationEl.appendChild(ulEl);
+      }
+      function displayPaginationBtn(page) {
+        const liEl = document.createElement('li');
+        const spanEl = document.createElement('span');
+        spanEl.classList.add('pagination-btn-page');
+        liEl.classList.add('pagination-btn');
+        liEl.appendChild(spanEl);
+        spanEl.textContent = page;
+
+        if (currentPage === page) liEl.classList.add('pagination-btn-active');
+
+        liEl.addEventListener('click', () => {
+          currentPage = page;
+          displayList(cocktailsData, rows, currentPage);
+
+          const currentLi = document.querySelector('li.pagination-btn-active');
+          currentLi.classList.remove('pagination-btn-active');
+
+          liEl.classList.add('pagination-btn-active');
+        });
+        return liEl;
+      }
+
+      displayList(cocktailsData, rows, currentPage);
+      // displayPagination(cocktailsData, rows);
+      if (cocktailsData.length > rows) {
+        displayPagination(cocktailsData, rows);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  });
+});
 
 async function onTargetSearchCocktailChange(event) {
   event.preventDefault();
@@ -312,7 +432,10 @@ async function onTargetSearchCocktailChange(event) {
     }
 
     displayList(cocktailsData, rows, currentPage);
-    displayPagination(cocktailsData, rows);
+    //  displayPagination(cocktailsData, rows);
+    if (cocktailsData.length > rows) {
+      displayPagination(cocktailsData, rows);
+    }
   } catch (error) {
     console.log(error);
   }

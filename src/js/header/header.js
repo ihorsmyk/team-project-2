@@ -210,6 +210,7 @@ async function handlerSubmitForm(e) {
       const paginatedData = cocktailsArr.slice(start, end);
       //
       refs.cardsContainerEl.innerHTML = drinkCardTemplate(paginatedData);
+      addSvgUseHearts();
       //  ---- footer
       document.body.style.display = 'block';
       const btnsRemove = document.querySelectorAll('.card-btn__remove');
@@ -352,7 +353,7 @@ async function handlerLearnMore(e) {
           ingrBackdrop.classList.remove('is-hidden');
 
           const ingrIconClose = document.querySelector('.ingr-icon-close');
-          ingrIconClose.addEventListener('click', () => {
+          ingrIconClose.addEventListener('click', e => {
             ingrBackdrop.classList.add('is-hidden');
           });
 
