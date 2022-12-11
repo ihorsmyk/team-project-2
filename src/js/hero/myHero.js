@@ -12,6 +12,13 @@ const URL = `https://www.thecocktaildb.com/api/json/v1/1/search.php`;
 //     return response.json();
 //   });
 // }
+const iconHeart1 = document.querySelector('.div-icon-heart1');
+const iconHeart2 = document.querySelector('.div-icon-heart2');
+const iconClose = document.querySelector('.div-icon-close');
+const useHeart1 = iconHeart1.href.baseVal;
+const useHeart2 = iconHeart2.href.baseVal;
+const useClose = iconClose.href.baseVal;
+
 const fetchCocktail = value => {
   const res = axios.get(`${URL}?f=${value}`);
   return res;
@@ -158,6 +165,7 @@ async function onTargetCocktailClick(event) {
       const paginatedData = cocktailsArr.slice(start, end);
       //
       refs.cardsContainerEl.innerHTML = drinkCardTemplate(paginatedData);
+      addSvgUseHearts();
       const btnsRemove = document.querySelectorAll('.card-btn__remove');
       for (let btn of btnsRemove) {
         btn.style.display = 'none';
@@ -257,6 +265,7 @@ async function onTargetSearchCocktailChange(event) {
       const paginatedData = cocktailsArr.slice(start, end);
       //
       refs.cardsContainerEl.innerHTML = drinkCardTemplate(paginatedData);
+      addSvgUseHearts();
       const btnsRemove = document.querySelectorAll('.card-btn__remove');
       for (let btn of btnsRemove) {
         btn.style.display = 'none';
@@ -307,205 +316,16 @@ async function onTargetSearchCocktailChange(event) {
   } catch (error) {
     console.log(error);
   }
-  //  old
-  //   const nameSearchCoctail = event.target.value;
-
-  //   fetchCocktail(nameSearchCoctail).then(data => {
-  //     console.log('data mobile');
-  //     console.log(data);
-  //   });
 }
 
-//  =========== paste
-
-// const modalCocktailEl = document.querySelector('.modal-cocktail');
-
-// async function handlerLearnMore(e) {
-//   const article = e.target.closest('.card');
-
-//   if (e.target.classList.contains('card-btn__learn')) {
-//     const nameQuery = article.children[1].textContent;
-//     const { data } = await axiosGetImages(nameQuery);
-//     console.log(data);
-//     const newOneData = { ...data.drinks[0] };
-//     const ingridientsArray = [];
-
-//     for (let key in newOneData) {
-//       if (key.includes('strIngredient') && newOneData[key] !== null) {
-//         ingridientsArray.push(newOneData[key]);
-//       }
-//     }
-//     newOneData['ingridients'] = ingridientsArray;
-//     const newData = [{ ...newOneData }];
-//     console.log(newOneData);
-
-//     console.log(window.innerWidth);
-//     if (window.innerWidth > 768) {
-//       modalCocktailEl.innerHTML = tabletDesktopCocktail(newData);
-
-//       const listIngridients = document.querySelector(
-//         '.cocktail-ingridients-list'
-//       );
-//       listIngridients.addEventListener('click', async e => {
-//         if (e.target.nodeName === 'LI') {
-//           const ingrNameQuery = e.target.textContent;
-//           console.log(ingrNameQuery);
-
-//           const ingrData = await axiosGetIngrByName(ingrNameQuery);
-//           console.log(ingrData.data.ingredients[0]);
-//           const ingrArr = [{ ...ingrData.data.ingredients[0] }];
-//           refs.modalIngr.innerHTML = tabletDesctopIngr(ingrArr);
-//           const ingrBackdrop = document.querySelector('.ingr-backdrop');
-//           ingrBackdrop.classList.remove('is-hidden');
-
-//           const ingrIconClose = document.querySelector('.ingr-icon-close');
-//           ingrIconClose.addEventListener('click', () => {
-//             ingrBackdrop.classList.add('is-hidden');
-//           });
-
-//           const ingrBtnRemove = document.querySelector('.ingr-btn__remove');
-//           const ingrBtnAdd = document.querySelector('.ingr-btn__add');
-//           ingrBtnRemove.style.display = 'none';
-
-//           ingrBtnAdd.addEventListener('click', () => {
-//             favoriteIngridients.push(ingrData.data.ingredients[0]);
-//             localStorage.setItem(
-//               'ingridients',
-//               JSON.stringify(favoriteIngridients)
-//             );
-
-//             ingrBtnAdd.style.display = 'none';
-//             ingrBtnRemove.style.display = 'block';
-//           });
-//           ingrBtnRemove.addEventListener('click', () => {
-//             favoriteIngridients.pop();
-//             localStorage.setItem(
-//               'ingridients',
-//               JSON.stringify(favoriteIngridients)
-//             );
-//             ingrBtnRemove.style.display = 'none';
-//             ingrBtnAdd.style.display = 'block';
-//           });
-//         }
-//       });
-
-//       const backdrop = document.querySelector('.backdrop');
-//       backdrop.classList.remove('is-hidden');
-//       document.body.style.overflow = 'hidden';
-
-//       const addBtn = document.querySelector('.tablet-btn-add');
-//       const removeBtn = document.querySelector('.tablet-btn-remove');
-//       removeBtn.style.display = 'none';
-
-//       addBtn.addEventListener('click', () => {
-//         favoriteDrinks.push(data.drinks[0]);
-//         localStorage.setItem('favorites', JSON.stringify(favoriteDrinks));
-//         removeBtn.style.display = 'block';
-//         addBtn.style.display = 'none';
-//       });
-
-//       removeBtn.addEventListener('click', () => {
-//         favoriteDrinks.pop();
-//         localStorage.setItem('favorites', JSON.stringify(favoriteDrinks));
-//         removeBtn.style.display = 'none';
-//         addBtn.style.display = 'block';
-//       });
-
-//       backdrop.addEventListener('click', e => {
-//         if (e.target.classList.contains('backdrop')) {
-//           backdrop.classList.add('is-hidden');
-//           document.body.style.overflow = 'auto';
-//         }
-//       });
-
-//       const iconClose = document.querySelector('.cocktail-icon-close');
-//       iconClose.addEventListener('click', () => {
-//         backdrop.classList.add('is-hidden');
-//         document.body.style.overflow = 'auto';
-//       });
-//     } else if (window.innerWidth < 768) {
-//       modalCocktailEl.innerHTML = mobileLearnMore(newData);
-//       const cocktailModal = document.querySelector('.coctail');
-//       console.log(cocktailModal);
-
-//       //
-//       document.body.style.overflow = 'hidden';
-//       //
-//       const listIngridients = document.querySelector(
-//         '.cocktail-ingridients-list'
-//       );
-//       listIngridients.addEventListener('click', async e => {
-//         if (e.target.nodeName === 'LI') {
-//           const ingrNameQuery = e.target.textContent;
-//           console.log(ingrNameQuery);
-
-//           const ingrData = await axiosGetIngrByName(ingrNameQuery);
-//           console.log(ingrData.data.ingredients[0]);
-//           const ingrArr = [{ ...ingrData.data.ingredients[0] }];
-//           refs.modalIngr.innerHTML = mobileIngrModal(ingrArr);
-//           const ingrBackdrop = document.querySelector('.ingr-backdrop');
-//           ingrBackdrop.classList.remove('is-hidden');
-//           document.body.style.overflow = 'hidden';
-
-//           const ingrIconClose = document.querySelector('.ingr-icon-close');
-//           ingrIconClose.addEventListener('click', () => {
-//             ingrBackdrop.classList.add('is-hidden');
-//             document.body.style.overflow = 'auto';
-//           });
-
-//           const ingrBtnRemove = document.querySelector('.ingr-btn__remove');
-//           const ingrBtnAdd = document.querySelector('.ingr-btn__add');
-//           ingrBtnRemove.style.display = 'none';
-
-//           ingrBtnAdd.addEventListener('click', () => {
-//             favoriteIngridients.push(ingrData.data.ingredients[0]);
-//             localStorage.setItem(
-//               'ingridients',
-//               JSON.stringify(favoriteIngridients)
-//             );
-
-//             ingrBtnAdd.style.display = 'none';
-//             ingrBtnRemove.style.display = 'block';
-//           });
-//           ingrBtnRemove.addEventListener('click', () => {
-//             favoriteIngridients.pop();
-//             localStorage.setItem(
-//               'ingridients',
-//               JSON.stringify(favoriteIngridients)
-//             );
-//             ingrBtnRemove.style.display = 'none';
-//             ingrBtnAdd.style.display = 'block';
-//           });
-//         }
-//       });
-//       //
-
-//       cocktailModal.style.transform = 'translateX(0%)';
-
-//       const iconClose = document.querySelector('.mobile-icon-close');
-//       iconClose.addEventListener('click', () => {
-//         cocktailModal.style.transform = 'translateX(-150%)';
-//         document.body.style.overflow = 'auto';
-//       });
-
-//       const addBtn = document.querySelector('.modal-btn-add');
-//       const removeBtn = document.querySelector('.modal-btn-remove');
-//       removeBtn.style.display = 'none';
-
-//       addBtn.addEventListener('click', () => {
-//         console.log('me add');
-//         favoriteDrinks.push(data.drinks[0]);
-//         localStorage.setItem('favorites', JSON.stringify(favoriteDrinks));
-//         removeBtn.style.display = 'block';
-//         addBtn.style.display = 'none';
-//       });
-
-//       removeBtn.addEventListener('click', () => {
-//         favoriteDrinks.pop();
-//         localStorage.setItem('favorites', JSON.stringify(favoriteDrinks));
-//         removeBtn.style.display = 'none';
-//         addBtn.style.display = 'block';
-//       });
-//     }
-//   }
-// }
+//
+function addSvgUseHearts() {
+  const addBtnsSvg = document.querySelectorAll('.card-btn__add svg');
+  for (let svg of addBtnsSvg) {
+    svg.innerHTML = `<use class="use-heart1" href='${useHeart1}'></use>`;
+  }
+  const removeBtnsSvg = document.querySelectorAll('.card-btn__remove svg');
+  for (let svg of removeBtnsSvg) {
+    svg.innerHTML = `<use class="use-heart1" href='${useHeart2}'></use>`;
+  }
+}
