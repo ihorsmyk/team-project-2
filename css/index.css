@@ -8,7 +8,7 @@
   padding: 0;
   white-space: nowrap;
   -webkit-clip-path: inset(100%);
-          clip-path: inset(100%);
+  clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
@@ -18,7 +18,7 @@
 }
 
 :root {
-  --basic-font: "Poppins", sans-serif;
+  --basic-font: 'Poppins', sans-serif;
   --basic-font-size: 18px;
   --text-white-color: #ffffff;
   --text-dark-color: #202025;
@@ -405,11 +405,12 @@ footer {
   line-height: 0.0314285714px;
   color: var(--accent-dark-orange);
   background-color: var(--accent-white-color);
-  border: 1px solid #FD5103;
+  border: 1px solid #fd5103;
   border-radius: 4px;
   cursor: pointer;
 }
-.hero__form-name:focus, .hero__form-name:hover {
+.hero__form-name:focus,
+.hero__form-name:hover {
   background-color: var(--accent-dark-orange);
   color: var(--accent-white-color);
 }
@@ -481,9 +482,10 @@ footer {
     color: var(--alphabet-color);
     text-align: center;
   }
-  .hero__name-items:hover, .hero__name-items:focus {
+  .hero__name-items:hover,
+  .hero__name-items:focus {
     color: var(--accent-dark-orange);
-    border: 1px solid #5F6775;
+    border: 1px solid #5f6775;
     text-shadow: 0px 4px 4px rgba(95, 103, 117, 0.25);
     border: none;
     cursor: pointer;
@@ -521,7 +523,7 @@ footer {
   display: flex;
   justify-content: center;
   -moz-column-gap: 20px;
-       column-gap: 20px;
+  column-gap: 20px;
 }
 
 .pagination-btn {
@@ -540,7 +542,7 @@ footer {
 .pagination-list {
   display: flex;
   -moz-column-gap: 20px;
-       column-gap: 20px;
+  column-gap: 20px;
   list-style: none;
 }
 
@@ -607,7 +609,7 @@ footer {
     flex-direction: row;
     justify-content: center;
     -moz-column-gap: 20px;
-         column-gap: 20px;
+    column-gap: 20px;
     margin-bottom: 24px;
   }
 }
@@ -639,7 +641,7 @@ footer {
   justify-content: center;
   padding: 7px 20px;
   -moz-column-gap: 8px;
-       column-gap: 8px;
+  column-gap: 8px;
   color: var(--accent-light-orange);
   background-color: transparent;
 }
@@ -655,7 +657,7 @@ footer {
   justify-content: center;
   padding: 7px 20px;
   -moz-column-gap: 8px;
-       column-gap: 8px;
+  column-gap: 8px;
   color: var(--accent-light-orange);
   background-color: transparent;
 }
@@ -778,12 +780,12 @@ footer {
   display: flex;
   align-items: center;
   -moz-column-gap: 10px;
-       column-gap: 10px;
+  column-gap: 10px;
   cursor: pointer;
 }
 
 .cocktail-ingridients-item::before {
-  content: url("../images/cocktail-modal/star.svg");
+  content: url('../images/cocktail-modal/star.svg');
   display: inline-block;
 }
 
@@ -824,7 +826,7 @@ footer {
   position: relative;
   display: flex;
   -moz-column-gap: 32px;
-       column-gap: 32px;
+  column-gap: 32px;
   margin-bottom: 28px;
 }
 
@@ -1169,13 +1171,13 @@ footer {
 .form-toggle {
   display: flex;
   -moz-column-gap: 12px;
-       column-gap: 12px;
+  column-gap: 12px;
   align-items: center;
 }
 
 .label-toggle,
 .label-toggle {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
@@ -1188,7 +1190,7 @@ footer {
   height: 20px;
   -webkit-appearance: none;
   -moz-appearance: none;
-       appearance: none;
+  appearance: none;
   -webkit-tap-highlight-color: transparent;
   overflow: hidden;
 }
@@ -1196,7 +1198,7 @@ footer {
 .toggle:before,
 .toggle:after {
   border-radius: 50%;
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   width: 16px;
