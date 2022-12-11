@@ -24,7 +24,8 @@
 }
 
 .site-nav__link {
-  color: #000000;
+ 
+  color: inherit;
 }
 
 .logo {
@@ -58,6 +59,8 @@
 
 // =========== MENU MOBILE ==============
 .search-form__input {
+  color: inherit;
+  background-color: inherit;;
   padding: 6px 8px;
   width: 280px;
   height: 40px;
@@ -103,7 +106,7 @@
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
   border-right: 0px;
-  background-color: var(--text-white-color);
+  background-color: inherit;
 }
 
 .mobile-menu {

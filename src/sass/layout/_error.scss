@@ -45,23 +45,19 @@
 
 // ===== no-coctails=======//
 
-.no-cocktails {
-}
-.section {
-}
+
 .no-cocktails-container {
   text-align: center;
 }
-.container {
-}
+
 .no-cocktails-title {
   @include text(22px, 600, 42px);
-  color: var(--text-dark-color);
+  color: inherit;
   margin-bottom: 60px;
 }
 .no-cocktails-subtitle {
   @include text(20px, 400, 60px);
-  color: var(--text-dark-color);
+  color: inherit;
 }
 
 @media screen and (min-width: 768px) {
