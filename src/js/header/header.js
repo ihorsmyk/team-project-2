@@ -329,22 +329,48 @@ async function handlerLearnMore(e) {
       ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
 
       const lsCocktails = JSON.parse(localStorage.getItem('favorites'));
-      for (let cocktail of lsCocktails) {
-        if (+cocktail.idDrink === +article.id) {
-          console.log(article.id);
-          const tabletBtnAdd = document.querySelector('.tablet-btn-add');
-          const tabletBtnRemove = document.querySelector('.tablet-btn-remove');
-          tabletBtnAdd.style.display = 'none';
-          tabletBtnRemove.style.display = 'block';
-          break;
-        } else {
-          console.log(article.id);
-          const tabletBtnAdd = document.querySelector('.tablet-btn-add');
-          const tabletBtnRemove = document.querySelector('.tablet-btn-remove');
-          tabletBtnAdd.style.display = 'block';
-          tabletBtnRemove.style.display = 'none';
+      console.log(lsCocktails);
+      if (lsCocktails.length) {
+        for (let cocktail of lsCocktails) {
+          if (+cocktail.idDrink === +article.id) {
+            console.log(article.id);
+            const tabletBtnAdd = document.querySelector('.tablet-btn-add');
+            const tabletBtnRemove =
+              document.querySelector('.tablet-btn-remove');
+            tabletBtnAdd.style.display = 'none';
+            tabletBtnRemove.style.display = 'block';
+            break;
+          } else {
+            console.log(article.id);
+            const tabletBtnAdd = document.querySelector('.tablet-btn-add');
+            const tabletBtnRemove =
+              document.querySelector('.tablet-btn-remove');
+            tabletBtnAdd.style.display = 'block';
+            tabletBtnRemove.style.display = 'none';
+          }
         }
+      } else {
+        const tabletBtnAdd = document.querySelector('.tablet-btn-add');
+        const tabletBtnRemove = document.querySelector('.tablet-btn-remove');
+        tabletBtnAdd.style.display = 'block';
+        tabletBtnRemove.style.display = 'none';
       }
+      // for (let cocktail of lsCocktails) {
+      //   if (+cocktail.idDrink === +article.id) {
+      //     console.log(article.id);
+      //     const tabletBtnAdd = document.querySelector('.tablet-btn-add');
+      //     const tabletBtnRemove = document.querySelector('.tablet-btn-remove');
+      //     tabletBtnAdd.style.display = 'none';
+      //     tabletBtnRemove.style.display = 'block';
+      //     break;
+      //   } else {
+      //     console.log(article.id);
+      //     const tabletBtnAdd = document.querySelector('.tablet-btn-add');
+      //     const tabletBtnRemove = document.querySelector('.tablet-btn-remove');
+      //     tabletBtnAdd.style.display = 'block';
+      //     tabletBtnRemove.style.display = 'none';
+      //   }
+      // }
 
       const listIngridients = document.querySelector(
         '.cocktail-ingridients-list'
