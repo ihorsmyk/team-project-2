@@ -355,22 +355,6 @@ async function handlerLearnMore(e) {
         tabletBtnAdd.style.display = 'block';
         tabletBtnRemove.style.display = 'none';
       }
-      // for (let cocktail of lsCocktails) {
-      //   if (+cocktail.idDrink === +article.id) {
-      //     console.log(article.id);
-      //     const tabletBtnAdd = document.querySelector('.tablet-btn-add');
-      //     const tabletBtnRemove = document.querySelector('.tablet-btn-remove');
-      //     tabletBtnAdd.style.display = 'none';
-      //     tabletBtnRemove.style.display = 'block';
-      //     break;
-      //   } else {
-      //     console.log(article.id);
-      //     const tabletBtnAdd = document.querySelector('.tablet-btn-add');
-      //     const tabletBtnRemove = document.querySelector('.tablet-btn-remove');
-      //     tabletBtnAdd.style.display = 'block';
-      //     tabletBtnRemove.style.display = 'none';
-      //   }
-      // }
 
       const listIngridients = document.querySelector(
         '.cocktail-ingridients-list'
@@ -477,6 +461,31 @@ async function handlerLearnMore(e) {
         '.mobile-icon-close'
       ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
 
+      const lsCocktails = JSON.parse(localStorage.getItem('favorites'));
+      console.log(lsCocktails);
+      if (lsCocktails.length) {
+        for (let cocktail of lsCocktails) {
+          if (+cocktail.idDrink === +article.id) {
+            console.log(article.id);
+            const mobileBtnAdd = document.querySelector('.modal-btn-add');
+            const mobileBtnRemove = document.querySelector('.modal-btn-remove');
+            mobileBtnAdd.style.display = 'none';
+            mobileBtnRemove.style.display = 'block';
+            break;
+          } else {
+            console.log(article.id);
+            const mobileBtnAdd = document.querySelector('.modal-btn-add');
+            const mobileBtnRemove = document.querySelector('.modal-btn-remove');
+            mobileBtnAdd.style.display = 'block';
+            mobileBtnRemove.style.display = 'none';
+          }
+        }
+      } else {
+        const mobileBtnAdd = document.querySelector('.modal-btn-add');
+        const mobileBtnRemove = document.querySelector('.modal-btn-remove');
+        mobileBtnAdd.style.display = 'block';
+        mobileBtnRemove.style.display = 'none';
+      }
       //
       document.body.style.overflow = 'hidden';
       //
@@ -540,7 +549,6 @@ async function handlerLearnMore(e) {
 
       const addBtn = document.querySelector('.modal-btn-add');
       const removeBtn = document.querySelector('.modal-btn-remove');
-      removeBtn.style.display = 'none';
 
       addBtn.addEventListener('click', () => {
         favoriteDrinks.push(data.drinks[0]);
