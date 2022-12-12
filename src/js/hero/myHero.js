@@ -45,7 +45,6 @@ const refs = {
   paginationListContainer: document.querySelector('.pagination'),
   // ==========
 };
-// console.log(refs.formSelect);
 
 const array = [
   'A',
@@ -92,7 +91,6 @@ let markupItems = [];
 function renderLitery(array) {
   markup = array
     .map(element => {
-      // console.log(element)
       return `<option class="hero__name-search" value="${element}">${element}</option>`;
     })
     .join('');
@@ -228,7 +226,6 @@ const myForm = document.querySelector('.my-form');
 const mySelect = document.querySelector('.my-select');
 const myDivOptions = document.querySelector('.my-div-options');
 const myDivArrow = document.querySelector('.my-div-arrow');
-console.dir(myDivOptions);
 
 myForm.addEventListener('click', async event => {
   event.preventDefault();
@@ -245,8 +242,8 @@ myForm.addEventListener('click', async event => {
 
       myForm.style.backgroundColor = '#fd5103';
       myForm.style.borderRadius = '4px';
-		 myDivOptions.style.color = '#fff';
-		 
+      myDivOptions.style.color = '#fff';
+
       myDivArrow.style.stroke = '#fff';
 
       const { data } = await fetchCocktail(nameSearchCoctail);
@@ -345,12 +342,11 @@ async function onTargetSearchCocktailChange(event) {
   event.preventDefault();
   refs.paginationContainer.innerHTML = '';
   refs.paginationListContainer.innerHTML = '';
-  console.log(event.target.value);
 
   try {
     const nameSearchCoctail = event.target.value;
     const { data } = await fetchCocktail(nameSearchCoctail);
-    console.log(data);
+
     if (data.drinks === null) {
       refs.cardsCaption.style.display = 'none';
       refs.cardsContainerEl.innerHTML = refs.errorEl.innerHTML;

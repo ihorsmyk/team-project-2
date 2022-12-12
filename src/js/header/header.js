@@ -174,7 +174,6 @@ async function handlerSubmitForm(e) {
   try {
     const userDrink = e.target.drink.value;
     const { data } = await axiosGetImages(userDrink);
-    console.log(data.drinks);
 
     if (data.drinks === null) {
       refs.cardsCaption.style.display = 'none';
@@ -278,7 +277,6 @@ async function handlerAddToLS(e) {
     const nameQuery = article.children[1].textContent;
     console.dir(article.children[1].textContent);
     const { data } = await axiosGetImages(nameQuery);
-    console.log(data.drinks[0]);
     let drink = { ...data.drinks[0] };
     favoriteDrinks.push(drink);
     localStorage.setItem('favorites', JSON.stringify(favoriteDrinks));
@@ -314,7 +312,6 @@ async function handlerLearnMore(e) {
   if (e.target.classList.contains('card-btn__learn')) {
     const nameQuery = article.children[1].textContent;
     const { data } = await axiosGetImages(nameQuery);
-    console.log(data);
     const newOneData = { ...data.drinks[0] };
     const ingridientsArray = [];
 
@@ -324,10 +321,8 @@ async function handlerLearnMore(e) {
       }
     }
     newOneData['ingridients'] = ingridientsArray;
-    const newData = [{ ...newOneData }];
-    console.log(newOneData);
-
-    console.log(window.innerWidth);
+	  const newData = [{ ...newOneData }];
+	  
     if (window.innerWidth > 768) {
       modalCocktailEl.innerHTML = tabletDesktopCocktail(newData);
       document.querySelector(
@@ -340,10 +335,8 @@ async function handlerLearnMore(e) {
       listIngridients.addEventListener('click', async e => {
         if (e.target.nodeName === 'LI') {
           const ingrNameQuery = e.target.textContent;
-          console.log(ingrNameQuery);
 
           const ingrData = await axiosGetIngrByName(ingrNameQuery);
-          console.log(ingrData.data.ingredients[0]);
           const ingrArr = [{ ...ingrData.data.ingredients[0] }];
           refs.modalIngr.innerHTML = tabletDesctopIngr(ingrArr);
           document.querySelector(
@@ -421,7 +414,6 @@ async function handlerLearnMore(e) {
     } else if (window.innerWidth < 768) {
       modalCocktailEl.innerHTML = mobileLearnMore(newData);
       const cocktailModal = document.querySelector('.coctail');
-      console.log(cocktailModal);
 
       document.querySelector(
         '.mobile-icon-close'
@@ -436,10 +428,8 @@ async function handlerLearnMore(e) {
       listIngridients.addEventListener('click', async e => {
         if (e.target.nodeName === 'LI') {
           const ingrNameQuery = e.target.textContent;
-          console.log(ingrNameQuery);
 
           const ingrData = await axiosGetIngrByName(ingrNameQuery);
-          console.log(ingrData.data.ingredients[0]);
           const ingrArr = [{ ...ingrData.data.ingredients[0] }];
           refs.modalIngr.innerHTML = mobileIngrModal(ingrArr);
           document.querySelector(
@@ -495,7 +485,6 @@ async function handlerLearnMore(e) {
       removeBtn.style.display = 'none';
 
       addBtn.addEventListener('click', () => {
-        console.log('me add');
         favoriteDrinks.push(data.drinks[0]);
         localStorage.setItem('favorites', JSON.stringify(favoriteDrinks));
         removeBtn.style.display = 'block';

@@ -4,7 +4,6 @@ const refs = {
   formSelect: document.querySelector('.js-hero-mobile'),
   formItems: document.querySelector('.js-hero-desktop'),
 };
-// console.log(refs.formSelect);
 
 const array = [
   'A',
@@ -50,7 +49,6 @@ let markup = [];
 function renderLitery(array) {
   markup = array
     .map(element => {
-      // console.log(element)
       return `<option class="hero__name-search" value="${element}">${element}</option>`;
     })
     .join('');
@@ -76,10 +74,8 @@ refs.formItems.addEventListener('click', onTargetCocktailClick);
 function onTargetCocktailClick(event) {
   event.preventDefault();
   const nameCocktail = event.target.textContent;
-  // console.log(nameCocktail);
-  fetchCocktail(nameCocktail).then(data => {
-    console.log(data);
-  });
+
+  fetchCocktail(nameCocktail).then(data => {});
 }
 
 refs.formSelect.addEventListener('change', onTargetSearchCocktailChange);
@@ -87,8 +83,5 @@ refs.formSelect.addEventListener('change', onTargetSearchCocktailChange);
 function onTargetSearchCocktailChange(event) {
   event.preventDefault();
   const nameSearchCoctail = event.target.value;
-  // console.log(nameSearchCoctail);
-  fetchCocktail(nameSearchCoctail).then(data => {
-    console.log(data);
-  });
+  fetchCocktail(nameSearchCoctail).then(data => {});
 }

@@ -29,7 +29,6 @@ refs.siteFavoriteHeaderWrapper.addEventListener('mouseout', () => {
 
 // refs.iconArrow.transform = 'rotate(180deg)';
 refs.mobileFavorite.addEventListener('click', () => {
-  console.log('111');
   refs.mobileFavorites.classList.toggle('hide-show');
   refs.iconArrow.classList.toggle('rotate180');
 });
@@ -69,9 +68,9 @@ ingrContainer.addEventListener('click', async e => {
   if (e.target.classList.contains('ingridient-btn__learn')) {
     const nameQuery = article.children[0].textContent;
     const { data } = await axiosGetIngrByName(nameQuery);
-    console.log(data);
+
     const newData = [data.ingredients[0]];
-    console.log(newData);
+
     const ingrBackDrop = document.querySelector('.ingr-backdrop');
 
     if (window.innerWidth < 767) {
@@ -104,7 +103,6 @@ ingrContainer.addEventListener('click', async e => {
       );
       refs.ingrContainer.innerHTML = ingridient(ingrs);
       addSvgUseHeartsIngr();
-      console.log(ingrs.length);
 
       localStorage.setItem('ingridients', JSON.stringify(ingrs));
 
@@ -121,7 +119,6 @@ ingrContainer.addEventListener('click', async e => {
       addBtnModal.style.display = 'none';
       removeBtnModal.style.display = 'block';
       //
-      console.log(itemAct[0]);
 
       let ingrs = JSON.parse(localStorage.getItem('ingridients'));
       ingrs.push(itemAct[0]);
@@ -146,7 +143,6 @@ ingrContainer.addEventListener('click', async e => {
     );
     refs.ingrContainer.innerHTML = ingridient(ingrs);
     addSvgUseHeartsIngr();
-    console.log(ingrs.length);
 
     localStorage.setItem('ingridients', JSON.stringify(ingrs));
     if (!ingrs.length) {

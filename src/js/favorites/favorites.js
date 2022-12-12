@@ -41,7 +41,6 @@ const useClose = iconClose.href.baseVal;
 
 // refs.iconArrow.transform = 'rotate(180deg)';
 refs.mobileFavorite.addEventListener('click', () => {
-  console.log('111');
   refs.mobileFavorites.classList.toggle('hide-show');
   refs.iconArrow.classList.toggle('rotate180');
 });
@@ -123,7 +122,7 @@ async function handlerLearnMore(e) {
   if (e.target.classList.contains('card-btn__learn')) {
     const nameQuery = article.children[1].textContent;
     const { data } = await axiosGetImages(nameQuery);
-    console.log(data);
+
     const newOneData = { ...data.drinks[0] };
     const ingridientsArray = [];
 
@@ -135,7 +134,6 @@ async function handlerLearnMore(e) {
     newOneData['ingridients'] = ingridientsArray;
     const newData = [{ ...newOneData }];
 
-    console.log(window.innerWidth);
     if (window.innerWidth > 768) {
       modalCocktailEl.innerHTML = tabletDesktopCocktail(newData);
       document.querySelector(
@@ -148,10 +146,9 @@ async function handlerLearnMore(e) {
       listIngridients.addEventListener('click', async e => {
         if (e.target.nodeName === 'LI') {
           const ingrNameQuery = e.target.textContent;
-          console.log(ingrNameQuery);
 
           const ingrData = await axiosGetIngrByName(ingrNameQuery);
-          console.log(ingrData.data.ingredients[0]);
+
           const ingrArr = [{ ...ingrData.data.ingredients[0] }];
           refs.modalIngr.innerHTML = tabletDesctopIngr(ingrArr);
           document.querySelector(
@@ -216,7 +213,6 @@ async function handlerLearnMore(e) {
       });
 
       removeBtn.addEventListener('click', e => {
-        console.log('remove btn');
         let favorites = JSON.parse(localStorage.getItem('favorites'));
 
         favorites = favorites.filter(item => item.idDrink !== e.target.id);
@@ -263,10 +259,7 @@ async function handlerLearnMore(e) {
       listIngridients.addEventListener('click', async e => {
         if (e.target.nodeName === 'LI') {
           const ingrNameQuery = e.target.textContent;
-          console.log(ingrNameQuery);
-
           const ingrData = await axiosGetIngrByName(ingrNameQuery);
-          console.log(ingrData.data.ingredients[0]);
           const ingrArr = [{ ...ingrData.data.ingredients[0] }];
           refs.modalIngr.innerHTML = mobileIngrModal(ingrArr);
           document.querySelector(

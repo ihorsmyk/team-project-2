@@ -23,7 +23,6 @@ const formToggleRefs2 = {
   mobileMenuBacground: document.querySelector('.mobile-menu'),
   mobileMenuBtn: document.querySelector('.mobile-menu__btn'),
 };
-console.log(formToggleRefs2.labels);
 
 formToggleRefs2.toggle.addEventListener('change', () => {
   formToggleRefs2.mobileMenuBacground.classList.toggle(
