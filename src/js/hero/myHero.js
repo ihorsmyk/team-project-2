@@ -167,14 +167,11 @@ async function onTargetCocktailClick(event) {
 
       const favCockLS = JSON.parse(localStorage.getItem('favorites'));
       const articleCard = document.querySelectorAll('.card');
-      console.log(articleCard);
-      console.log(favCockLS);
+
       if (favCockLS !== null && favCockLS.length) {
         for (let card of articleCard) {
-          console.log(card.children[1].textContent);
           for (let cock of favCockLS) {
             if (card.children[1].textContent === cock.strDrink) {
-              console.log('yes');
               card.children[2].children[1].style.display = 'none';
               card.children[2].children[2].style.display = 'block';
               break;
@@ -309,14 +306,11 @@ myForm.addEventListener('click', async event => {
         addSvgUseHearts();
         const favCockLS = JSON.parse(localStorage.getItem('favorites'));
         const articleCard = document.querySelectorAll('.card');
-        console.log(articleCard);
-        console.log(favCockLS);
+
         if (favCockLS !== null && favCockLS.length) {
           for (let card of articleCard) {
-            console.log(card.children[1].textContent);
             for (let cock of favCockLS) {
               if (card.children[1].textContent === cock.strDrink) {
-                console.log('yes');
                 card.children[2].children[1].style.display = 'none';
                 card.children[2].children[2].style.display = 'block';
                 break;

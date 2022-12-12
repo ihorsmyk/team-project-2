@@ -46,14 +46,10 @@ async function randomCocktails(e) {
       refs.cardsContainerEl.innerHTML = markup;
       const favCockLS = JSON.parse(localStorage.getItem('favorites'));
       const articleCard = document.querySelectorAll('.card');
-      console.log(articleCard);
-      console.log(favCockLS);
       if (favCockLS !== null && favCockLS.length) {
         for (let card of articleCard) {
-          console.log(card.children[1].textContent);
           for (let cock of favCockLS) {
             if (card.children[1].textContent === cock.strDrink) {
-              console.log('yes');
               card.children[2].children[1].style.display = 'none';
               card.children[2].children[2].style.display = 'block';
               break;
@@ -97,14 +93,10 @@ async function randomCocktails(e) {
 
       const favCockLS = JSON.parse(localStorage.getItem('favorites'));
       const articleCard = document.querySelectorAll('.card');
-      console.log(articleCard);
-      console.log(favCockLS);
       if (favCockLS !== null && favCockLS.length) {
         for (let card of articleCard) {
-          console.log(card.children[1].textContent);
           for (let cock of favCockLS) {
             if (card.children[1].textContent === cock.strDrink) {
-              console.log('yes');
               card.children[2].children[1].style.display = 'none';
               card.children[2].children[2].style.display = 'block';
               break;
@@ -157,14 +149,11 @@ async function randomCocktails(e) {
 
         const favCockLS = JSON.parse(localStorage.getItem('favorites'));
         const articleCard = document.querySelectorAll('.card');
-        console.log(articleCard);
-        console.log(favCockLS);
+
         if (favCockLS !== null && favCockLS.length) {
           for (let card of articleCard) {
-            console.log(card.children[1].textContent);
             for (let cock of favCockLS) {
               if (card.children[1].textContent === cock.strDrink) {
-                console.log('yes');
                 card.children[2].children[1].style.display = 'none';
                 card.children[2].children[2].style.display = 'block';
                 break;
@@ -288,14 +277,10 @@ async function handlerSubmitForm(e) {
       //  test load from ls
       const favCockLS = JSON.parse(localStorage.getItem('favorites'));
       const articleCard = document.querySelectorAll('.card');
-      console.log(articleCard);
-      console.log(favCockLS);
       if (favCockLS !== null && favCockLS.length) {
         for (let card of articleCard) {
-          console.log(card.children[1].textContent);
           for (let cock of favCockLS) {
             if (card.children[1].textContent === cock.strDrink) {
-              console.log('yes');
               card.children[2].children[1].style.display = 'none';
               card.children[2].children[2].style.display = 'block';
               break;
@@ -671,7 +656,7 @@ async function handlerLearnMore(e) {
             '.mobile-modal-container'
           );
           const mobileIngrTextContent = ingrMobileMenu.children[0].textContent;
-          console.log(mobileIngrTextContent);
+
           const lsIngridients = JSON.parse(localStorage.getItem('ingridients'));
 
           if (lsIngridients !== null && lsIngridients.length) {
