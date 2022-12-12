@@ -57,14 +57,18 @@ const axiosGetIngrByName = query => {
   return res;
 };
 //
-let favoriteIngridients = [];
+let favoriteIngridients;
+if (JSON.parse(localStorage.getItem('ingridients')) === null) {
+  favoriteIngridients = [];
+} else {
+  favoriteIngridients = JSON.parse(localStorage.getItem('ingridients'));
+}
+// let favoriteIngridients = [];
 refs.cardsCaption.style.display = 'none';
 
 window.addEventListener('load', loadFromLS);
 refs.cardsContainerEl.addEventListener('click', handlerRemoveFromLS);
 refs.cardsContainerEl.addEventListener('click', handlerLearnMore);
-
-// let favoriteIngridients = [];
 
 let favorite = JSON.parse(localStorage.getItem('favorites'));
 function loadFromLS() {
@@ -162,10 +166,43 @@ async function handlerLearnMore(e) {
             ingrBackdrop.classList.add('is-hidden');
             document.body.style.overflow = 'hidden';
           });
+          //   start ingridients
+          const ingrtabletArticle = document.querySelector(
+            '.tablet-desktop-ingr-modal'
+          );
+          const ingrTextContent = ingrtabletArticle.children[0].textContent;
+          const lsIngridients = JSON.parse(localStorage.getItem('ingridients'));
+          if (lsIngridients !== null && lsIngridients.length) {
+            for (let ingridient of lsIngridients) {
+              if (ingridient.strIngredient === ingrTextContent) {
+                const tabletIngrBtnAdd =
+                  document.querySelector('.ingr-btn__add');
+                const tabletIngrBtnRemove =
+                  document.querySelector('.ingr-btn__remove');
+                tabletIngrBtnAdd.style.display = 'none';
+                tabletIngrBtnRemove.style.display = 'block';
+                break;
+              } else {
+                const tabletIngrBtnAdd =
+                  document.querySelector('.ingr-btn__add');
+                const tabletIngrBtnRemove =
+                  document.querySelector('.ingr-btn__remove');
+                tabletIngrBtnAdd.style.display = 'block';
+                tabletIngrBtnRemove.style.display = 'none';
+              }
+            }
+          } else {
+            const tabletIngrBtnAdd = document.querySelector('.ingr-btn__add');
+            const tabletIngrBtnRemove =
+              document.querySelector('.ingr-btn__remove');
+            tabletIngrBtnAdd.style.display = 'block';
+            tabletIngrBtnRemove.style.display = 'none';
+          }
+          //   start ingridients
 
           const ingrBtnRemove = document.querySelector('.ingr-btn__remove');
           const ingrBtnAdd = document.querySelector('.ingr-btn__add');
-          ingrBtnRemove.style.display = 'none';
+          //  ingrBtnRemove.style.display = 'none';
 
           ingrBtnAdd.addEventListener('click', () => {
             favoriteIngridients.push(ingrData.data.ingredients[0]);
@@ -178,7 +215,10 @@ async function handlerLearnMore(e) {
             ingrBtnRemove.style.display = 'block';
           });
           ingrBtnRemove.addEventListener('click', () => {
-            favoriteIngridients.pop();
+            favoriteIngridients = favoriteIngridients.filter(
+              ingridient => ingridient.strIngredient !== ingrTextContent
+            );
+
             localStorage.setItem(
               'ingridients',
               JSON.stringify(favoriteIngridients)
@@ -275,9 +315,43 @@ async function handlerLearnMore(e) {
             document.body.style.overflow = 'hidden';
           });
 
+          //   start ingr mobile
+          const ingrMobileMenu = document.querySelector(
+            '.mobile-modal-container'
+          );
+          const mobileIngrTextContent = ingrMobileMenu.children[0].textContent;
+          const lsIngridients = JSON.parse(localStorage.getItem('ingridients'));
+
+          if (lsIngridients !== null && lsIngridients.length) {
+            for (let ingridient of lsIngridients) {
+              if (ingridient.strIngredient === mobileIngrTextContent) {
+                const mobileIngrBtnAdd =
+                  document.querySelector('.ingr-btn__add');
+                const mobileIngrBtnRemove =
+                  document.querySelector('.ingr-btn__remove');
+                mobileIngrBtnAdd.style.display = 'none';
+                mobileIngrBtnRemove.style.display = 'block';
+                break;
+              } else {
+                const mobileIngrBtnAdd =
+                  document.querySelector('.ingr-btn__add');
+                const mobileIngrBtnRemove =
+                  document.querySelector('.ingr-btn__remove');
+                mobileIngrBtnAdd.style.display = 'block';
+                mobileIngrBtnRemove.style.display = 'none';
+              }
+            }
+          } else {
+            const mobileIngrBtnAdd = document.querySelector('.ingr-btn__add');
+            const mobileIngrBtnRemove =
+              document.querySelector('.ingr-btn__remove');
+            mobileIngrBtnAdd.style.display = 'block';
+            mobileIngrBtnRemove.style.display = 'none';
+          }
+          //   start ingr mobile
           const ingrBtnRemove = document.querySelector('.ingr-btn__remove');
           const ingrBtnAdd = document.querySelector('.ingr-btn__add');
-          ingrBtnRemove.style.display = 'none';
+          //  ingrBtnRemove.style.display = 'none';
 
           ingrBtnAdd.addEventListener('click', () => {
             let ingr = JSON.parse(localStorage.getItem('ingridients'));
@@ -292,7 +366,10 @@ async function handlerLearnMore(e) {
             ingrBtnRemove.style.display = 'block';
           });
           ingrBtnRemove.addEventListener('click', () => {
-            favoriteIngridients.pop();
+            favoriteIngridients = favoriteIngridients.filter(
+              ingridient => ingridient.strIngredient !== mobileIngrTextContent
+            );
+            //
             localStorage.setItem(
               'ingridients',
               JSON.stringify(favoriteIngridients)

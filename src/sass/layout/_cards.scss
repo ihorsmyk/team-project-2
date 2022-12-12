@@ -25,6 +25,7 @@
   @include text(26px, 900, 42px);
   color: inherit;
   text-align: center;
+  margin: 0 auto;
   margin-bottom: 16px;
 }
 
@@ -132,6 +133,9 @@
     padding: 0px 28px;
   }
   .card-photo {
+    width: 395px;
+  }
+  .card {
     width: 395px;
   }
   .cards-container {

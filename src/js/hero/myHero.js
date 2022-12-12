@@ -164,11 +164,36 @@ async function onTargetCocktailClick(event) {
       //
       refs.cardsContainerEl.innerHTML = drinkCardTemplate(paginatedData);
       addSvgUseHearts();
-      const btnsRemove = document.querySelectorAll('.card-btn__remove');
-      for (let btn of btnsRemove) {
-        btn.style.display = 'none';
+
+      const favCockLS = JSON.parse(localStorage.getItem('favorites'));
+      const articleCard = document.querySelectorAll('.card');
+      console.log(articleCard);
+      console.log(favCockLS);
+      if (favCockLS !== null && favCockLS.length) {
+        for (let card of articleCard) {
+          console.log(card.children[1].textContent);
+          for (let cock of favCockLS) {
+            if (card.children[1].textContent === cock.strDrink) {
+              console.log('yes');
+              card.children[2].children[1].style.display = 'none';
+              card.children[2].children[2].style.display = 'block';
+              break;
+            } else {
+              card.children[2].children[1].style.display = 'block';
+              card.children[2].children[2].style.display = 'none';
+            }
+          }
+        }
+      } else {
+        for (let card of articleCard) {
+          card.children[2].children[1].style.display = 'block';
+          card.children[2].children[2].style.display = 'none';
+        }
       }
-      //
+      // const btnsRemove = document.querySelectorAll('.card-btn__remove');
+      // for (let btn of btnsRemove) {
+      //   btn.style.display = 'none';
+      // }
 
       paginatedData.forEach(el => {
         const cocktailEl = document.createElement('div');
@@ -282,10 +307,35 @@ myForm.addEventListener('click', async event => {
         //
         refs.cardsContainerEl.innerHTML = drinkCardTemplate(paginatedData);
         addSvgUseHearts();
-        const btnsRemove = document.querySelectorAll('.card-btn__remove');
-        for (let btn of btnsRemove) {
-          btn.style.display = 'none';
+        const favCockLS = JSON.parse(localStorage.getItem('favorites'));
+        const articleCard = document.querySelectorAll('.card');
+        console.log(articleCard);
+        console.log(favCockLS);
+        if (favCockLS !== null && favCockLS.length) {
+          for (let card of articleCard) {
+            console.log(card.children[1].textContent);
+            for (let cock of favCockLS) {
+              if (card.children[1].textContent === cock.strDrink) {
+                console.log('yes');
+                card.children[2].children[1].style.display = 'none';
+                card.children[2].children[2].style.display = 'block';
+                break;
+              } else {
+                card.children[2].children[1].style.display = 'block';
+                card.children[2].children[2].style.display = 'none';
+              }
+            }
+          }
+        } else {
+          for (let card of articleCard) {
+            card.children[2].children[1].style.display = 'block';
+            card.children[2].children[2].style.display = 'none';
+          }
         }
+        //   const btnsRemove = document.querySelectorAll('.card-btn__remove');
+        //   for (let btn of btnsRemove) {
+        //     btn.style.display = 'none';
+        //   }
         //
 
         paginatedData.forEach(el => {

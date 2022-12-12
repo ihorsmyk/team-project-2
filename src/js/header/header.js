@@ -44,11 +44,35 @@ async function randomCocktails(e) {
 
       refs.cardsCaption.style.display = 'block';
       refs.cardsContainerEl.innerHTML = markup;
-
-      const btnsRemove = document.querySelectorAll('.card-btn__remove');
-      for (let btn of btnsRemove) {
-        btn.style.display = 'none';
+      const favCockLS = JSON.parse(localStorage.getItem('favorites'));
+      const articleCard = document.querySelectorAll('.card');
+      console.log(articleCard);
+      console.log(favCockLS);
+      if (favCockLS !== null && favCockLS.length) {
+        for (let card of articleCard) {
+          console.log(card.children[1].textContent);
+          for (let cock of favCockLS) {
+            if (card.children[1].textContent === cock.strDrink) {
+              console.log('yes');
+              card.children[2].children[1].style.display = 'none';
+              card.children[2].children[2].style.display = 'block';
+              break;
+            } else {
+              card.children[2].children[1].style.display = 'block';
+              card.children[2].children[2].style.display = 'none';
+            }
+          }
+        }
+      } else {
+        for (let card of articleCard) {
+          card.children[2].children[1].style.display = 'block';
+          card.children[2].children[2].style.display = 'none';
+        }
       }
+      // const btnsRemove = document.querySelectorAll('.card-btn__remove');
+      // for (let btn of btnsRemove) {
+      //   btn.style.display = 'none';
+      // }
       addSvgUseHearts();
     });
   } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
@@ -71,10 +95,35 @@ async function randomCocktails(e) {
       refs.cardsCaption.style.display = 'block';
       refs.cardsContainerEl.innerHTML = markup;
 
-      const btnsRemove = document.querySelectorAll('.card-btn__remove');
-      for (let btn of btnsRemove) {
-        btn.style.display = 'none';
+      const favCockLS = JSON.parse(localStorage.getItem('favorites'));
+      const articleCard = document.querySelectorAll('.card');
+      console.log(articleCard);
+      console.log(favCockLS);
+      if (favCockLS !== null && favCockLS.length) {
+        for (let card of articleCard) {
+          console.log(card.children[1].textContent);
+          for (let cock of favCockLS) {
+            if (card.children[1].textContent === cock.strDrink) {
+              console.log('yes');
+              card.children[2].children[1].style.display = 'none';
+              card.children[2].children[2].style.display = 'block';
+              break;
+            } else {
+              card.children[2].children[1].style.display = 'block';
+              card.children[2].children[2].style.display = 'none';
+            }
+          }
+        }
+      } else {
+        for (let card of articleCard) {
+          card.children[2].children[1].style.display = 'block';
+          card.children[2].children[2].style.display = 'none';
+        }
       }
+      // const btnsRemove = document.querySelectorAll('.card-btn__remove');
+      // for (let btn of btnsRemove) {
+      //   btn.style.display = 'none';
+      // }
       addSvgUseHearts();
     });
   } else if (window.innerWidth >= 1280) {
@@ -106,10 +155,35 @@ async function randomCocktails(e) {
         refs.cardsCaption.style.display = 'block';
         refs.cardsContainerEl.innerHTML = markup;
 
-        const btnsRemove = document.querySelectorAll('.card-btn__remove');
-        for (let btn of btnsRemove) {
-          btn.style.display = 'none';
+        const favCockLS = JSON.parse(localStorage.getItem('favorites'));
+        const articleCard = document.querySelectorAll('.card');
+        console.log(articleCard);
+        console.log(favCockLS);
+        if (favCockLS !== null && favCockLS.length) {
+          for (let card of articleCard) {
+            console.log(card.children[1].textContent);
+            for (let cock of favCockLS) {
+              if (card.children[1].textContent === cock.strDrink) {
+                console.log('yes');
+                card.children[2].children[1].style.display = 'none';
+                card.children[2].children[2].style.display = 'block';
+                break;
+              } else {
+                card.children[2].children[1].style.display = 'block';
+                card.children[2].children[2].style.display = 'none';
+              }
+            }
+          }
+        } else {
+          for (let card of articleCard) {
+            card.children[2].children[1].style.display = 'block';
+            card.children[2].children[2].style.display = 'none';
+          }
         }
+        //   const btnsRemove = document.querySelectorAll('.card-btn__remove');
+        //   for (let btn of btnsRemove) {
+        //     btn.style.display = 'none';
+        //   }
         addSvgUseHearts();
       }
     );
@@ -210,12 +284,44 @@ async function handlerSubmitForm(e) {
       //
       refs.cardsContainerEl.innerHTML = drinkCardTemplate(paginatedData);
       addSvgUseHearts();
+
+      //  test load from ls
+      const favCockLS = JSON.parse(localStorage.getItem('favorites'));
+      const articleCard = document.querySelectorAll('.card');
+      console.log(articleCard);
+      console.log(favCockLS);
+      if (favCockLS !== null && favCockLS.length) {
+        for (let card of articleCard) {
+          console.log(card.children[1].textContent);
+          for (let cock of favCockLS) {
+            if (card.children[1].textContent === cock.strDrink) {
+              console.log('yes');
+              card.children[2].children[1].style.display = 'none';
+              card.children[2].children[2].style.display = 'block';
+              break;
+            } else {
+              card.children[2].children[1].style.display = 'block';
+              card.children[2].children[2].style.display = 'none';
+            }
+          }
+        }
+      } else {
+        for (let card of articleCard) {
+          card.children[2].children[1].style.display = 'block';
+          card.children[2].children[2].style.display = 'none';
+        }
+      }
+      //
+
+      //  start submit
+
+      //
       //  ---- footer
       document.body.style.display = 'block';
-      const btnsRemove = document.querySelectorAll('.card-btn__remove');
-      for (let btn of btnsRemove) {
-        btn.style.display = 'none';
-      }
+      // const btnsRemove = document.querySelectorAll('.card-btn__remove');
+      // for (let btn of btnsRemove) {
+      //   btn.style.display = 'none';
+      // }
       //
 
       paginatedData.forEach(el => {
@@ -268,8 +374,21 @@ async function handlerSubmitForm(e) {
   }
 }
 
-let favoriteDrinks = [];
-let favoriteIngridients = [];
+// let favoriteDrinks = [];
+// let favoriteIngridients = [];
+
+let favoriteIngridients;
+let favoriteDrinks;
+if (JSON.parse(localStorage.getItem('ingridients')) === null) {
+  favoriteIngridients = [];
+} else {
+  favoriteIngridients = JSON.parse(localStorage.getItem('ingridients'));
+}
+if (JSON.parse(localStorage.getItem('favorites')) === null) {
+  favoriteDrinks = [];
+} else {
+  favoriteDrinks = JSON.parse(localStorage.getItem('favorites'));
+}
 
 async function handlerAddToLS(e) {
   const article = e.target.closest('.card');
@@ -307,7 +426,6 @@ const modalCocktailEl = document.querySelector('.modal-cocktail');
 
 async function handlerLearnMore(e) {
   const article = e.target.closest('.card');
-
   if (e.target.classList.contains('card-btn__learn')) {
     const nameQuery = article.children[1].textContent;
     const { data } = await axiosGetImages(nameQuery);
@@ -353,6 +471,7 @@ async function handlerLearnMore(e) {
         tabletBtnAdd.style.display = 'block';
         tabletBtnRemove.style.display = 'none';
       }
+      //start cocktails
 
       const listIngridients = document.querySelector(
         '.cocktail-ingridients-list'
@@ -408,6 +527,8 @@ async function handlerLearnMore(e) {
             tabletIngrBtnAdd.style.display = 'block';
             tabletIngrBtnRemove.style.display = 'none';
           }
+
+          //   start ingridients
 
           const ingrBtnRemove = document.querySelector('.ingr-btn__remove');
           const ingrBtnAdd = document.querySelector('.ingr-btn__add');
@@ -494,6 +615,7 @@ async function handlerLearnMore(e) {
         '.mobile-icon-close'
       ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
 
+      //   start cocktails
       const lsCocktails = JSON.parse(localStorage.getItem('favorites'));
       if (lsCocktails !== null && lsCocktails.length) {
         for (let cocktail of lsCocktails) {
@@ -516,6 +638,7 @@ async function handlerLearnMore(e) {
         mobileBtnAdd.style.display = 'block';
         mobileBtnRemove.style.display = 'none';
       }
+      //   start cocktails
       //
       document.body.style.overflow = 'hidden';
       //
@@ -570,7 +693,14 @@ async function handlerLearnMore(e) {
                 mobileIngrBtnRemove.style.display = 'none';
               }
             }
+          } else {
+            const mobileIngrBtnAdd = document.querySelector('.ingr-btn__add');
+            const mobileIngrBtnRemove =
+              document.querySelector('.ingr-btn__remove');
+            mobileIngrBtnAdd.style.display = 'block';
+            mobileIngrBtnRemove.style.display = 'none';
           }
+          //   start ingr mobile
 
           const ingrBtnRemove = document.querySelector('.ingr-btn__remove');
           const ingrBtnAdd = document.querySelector('.ingr-btn__add');
