@@ -16,12 +16,12 @@
 }
 .ingridient-card-title {
   @include text(26px, 900, 42px);
-  color: var(--text-dark-color);
+  color: inherit;
   margin-bottom: 20px;
 }
 .ingridient-card-subtitle {
   @include text(14px, 600, 21px);
-  color: var(--text-dark-color);
+  color: inherit;
   text-transform: uppercase;
   margin-bottom: 20px;
 }

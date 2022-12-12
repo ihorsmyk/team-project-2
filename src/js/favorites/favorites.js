@@ -163,6 +163,7 @@ async function handlerLearnMore(e) {
           const ingrIconClose = document.querySelector('.ingr-icon-close');
           ingrIconClose.addEventListener('click', () => {
             ingrBackdrop.classList.add('is-hidden');
+            document.body.style.overflow = 'hidden';
           });
 
           const ingrBtnRemove = document.querySelector('.ingr-btn__remove');
@@ -253,6 +254,8 @@ async function handlerLearnMore(e) {
       ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
       const cocktailModal = document.querySelector('.coctail');
 
+      document.body.style.overflow = 'hidden';
+
       //
       const listIngridients = document.querySelector(
         '.cocktail-ingridients-list'
@@ -271,10 +274,12 @@ async function handlerLearnMore(e) {
           ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
           const ingrBackdrop = document.querySelector('.ingr-backdrop');
           ingrBackdrop.classList.remove('is-hidden');
+          document.body.style.overflow = 'hidden';
 
           const ingrIconClose = document.querySelector('.ingr-icon-close');
           ingrIconClose.addEventListener('click', () => {
             ingrBackdrop.classList.add('is-hidden');
+            document.body.style.overflow = 'hidden';
           });
 
           const ingrBtnRemove = document.querySelector('.ingr-btn__remove');
@@ -311,6 +316,7 @@ async function handlerLearnMore(e) {
       const iconClose = document.querySelector('.mobile-icon-close');
       iconClose.addEventListener('click', () => {
         cocktailModal.style.transform = 'translateX(-150%)';
+        document.body.style.overflow = 'auto';
       });
 
       const addBtn = document.querySelector('.modal-btn-add');

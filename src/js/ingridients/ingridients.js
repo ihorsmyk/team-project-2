@@ -3,6 +3,7 @@ import ingridient from '../../templates/ingridients.hbs';
 import noIngridients from '../../templates/no-ingridients.hbs';
 
 import tabletDesctopIngr from '../../templates/tablet-desctop-ingr-modal.hbs';
+import mobileIngrModal from '../../templates/mobile-ingr-modal.hbs';
 
 const refs = {
   mobileFavorite: document.querySelector('.mobile-favorite'),
@@ -73,7 +74,12 @@ ingrContainer.addEventListener('click', async e => {
     console.log(newData);
     const ingrBackDrop = document.querySelector('.ingr-backdrop');
 
-    refs.modalIngr.innerHTML = tabletDesctopIngr(newData);
+    if (window.innerWidth < 767) {
+      refs.modalIngr.innerHTML = mobileIngrModal(newData);
+    } else if (window.innerWidth >= 768) {
+      refs.modalIngr.innerHTML = tabletDesctopIngr(newData);
+    }
+
     document.querySelector(
       '.ingr-icon-close'
     ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
