@@ -275,7 +275,6 @@ async function handlerAddToLS(e) {
   const article = e.target.closest('.card');
   if (e.target.classList.contains('card-btn__add')) {
     const nameQuery = article.children[1].textContent;
-    console.dir(article.children[1].textContent);
     const { data } = await axiosGetImages(nameQuery);
     let drink = { ...data.drinks[0] };
     favoriteDrinks.push(drink);
@@ -321,13 +320,31 @@ async function handlerLearnMore(e) {
       }
     }
     newOneData['ingridients'] = ingridientsArray;
-	  const newData = [{ ...newOneData }];
-	  
+    const newData = [{ ...newOneData }];
+
     if (window.innerWidth > 768) {
       modalCocktailEl.innerHTML = tabletDesktopCocktail(newData);
       document.querySelector(
         '.cocktail-icon-close'
       ).innerHTML = `<use class="use-heart1" href='${useClose}'></use>`;
+
+      const lsCocktails = JSON.parse(localStorage.getItem('favorites'));
+      for (let cocktail of lsCocktails) {
+        if (+cocktail.idDrink === +article.id) {
+          console.log(article.id);
+          const tabletBtnAdd = document.querySelector('.tablet-btn-add');
+          const tabletBtnRemove = document.querySelector('.tablet-btn-remove');
+          tabletBtnAdd.style.display = 'none';
+          tabletBtnRemove.style.display = 'block';
+          break;
+        } else {
+          console.log(article.id);
+          const tabletBtnAdd = document.querySelector('.tablet-btn-add');
+          const tabletBtnRemove = document.querySelector('.tablet-btn-remove');
+          tabletBtnAdd.style.display = 'block';
+          tabletBtnRemove.style.display = 'none';
+        }
+      }
 
       const listIngridients = document.querySelector(
         '.cocktail-ingridients-list'
@@ -383,20 +400,35 @@ async function handlerLearnMore(e) {
 
       const addBtn = document.querySelector('.tablet-btn-add');
       const removeBtn = document.querySelector('.tablet-btn-remove');
-      removeBtn.style.display = 'none';
+      // removeBtn.style.display = 'none';
 
       addBtn.addEventListener('click', () => {
         favoriteDrinks.push(data.drinks[0]);
         localStorage.setItem('favorites', JSON.stringify(favoriteDrinks));
         removeBtn.style.display = 'block';
         addBtn.style.display = 'none';
+
+        const cardBtnAdd = article.children[2].children[1];
+        const cardBtnRemove = article.children[2].children[2];
+
+        cardBtnAdd.style.display = 'none';
+        cardBtnRemove.style.display = 'block';
       });
 
       removeBtn.addEventListener('click', () => {
-        favoriteDrinks.pop();
+        favoriteDrinks = favoriteDrinks.filter(
+          drink => drink.idDrink !== article.id
+        );
+
         localStorage.setItem('favorites', JSON.stringify(favoriteDrinks));
         removeBtn.style.display = 'none';
         addBtn.style.display = 'block';
+
+        const cardBtnAdd = article.children[2].children[1];
+        const cardBtnRemove = article.children[2].children[2];
+
+        cardBtnAdd.style.display = 'block';
+        cardBtnRemove.style.display = 'none';
       });
 
       backdrop.addEventListener('click', e => {
@@ -489,13 +521,28 @@ async function handlerLearnMore(e) {
         localStorage.setItem('favorites', JSON.stringify(favoriteDrinks));
         removeBtn.style.display = 'block';
         addBtn.style.display = 'none';
+
+        const cardBtnAdd = article.children[2].children[1];
+        const cardBtnRemove = article.children[2].children[2];
+
+        cardBtnAdd.style.display = 'none';
+        cardBtnRemove.style.display = 'block';
       });
 
       removeBtn.addEventListener('click', () => {
-        favoriteDrinks.pop();
+        favoriteDrinks = favoriteDrinks.filter(
+          drink => drink.idDrink !== article.id
+        );
+
         localStorage.setItem('favorites', JSON.stringify(favoriteDrinks));
         removeBtn.style.display = 'none';
         addBtn.style.display = 'block';
+
+        const cardBtnAdd = article.children[2].children[1];
+        const cardBtnRemove = article.children[2].children[2];
+
+        cardBtnAdd.style.display = 'block';
+        cardBtnRemove.style.display = 'none';
       });
     }
   }
